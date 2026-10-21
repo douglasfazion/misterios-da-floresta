@@ -1,4 +1,4 @@
-# JOCA — As Sombras da Mata v0.5.3
+# JOCA — As Sombras da Mata v0.5.2
 
 ## Abra e jogue imediatamente
 
@@ -37,7 +37,7 @@ Abra `http://localhost:4173`. `npm run build` compila o código e copia a biblio
 ## Observações
 - Mantivemos a arte da v0.3.1; os problemas artísticos das imagens não são magicamente resolvidos pela troca de motor.
 - Os testes automatizados validam regras e arquivos. A versão Canvas offline pode ser testada diretamente no navegador. A versão Phaser depende da disponibilidade do runtime externo e precisa de validação visual adicional.
-- Versão: **v0.5.3**, correção da corrida. A versão restaurada jogável de referência é a **v0.3.1**.
+- Versão: **v0.5.2**, correção da corrida. A versão restaurada jogável de referência é a **v0.3.1**.
 
 ## v0.5.1 — escala do salto corrigida
 - Os 6 PNGs do salto foram normalizados para a mesma altura aparente do Joca, descartando apenas fragmentos desconectados de outras poses.
@@ -45,7 +45,7 @@ Abra `http://localhost:4173`. `npm run build` compila o código e copia a biblio
 - Código offline e código Phaser/TypeScript foram atualizados igualmente.
 - Cenário, física, sombra, caminhada, corrida e ataque permanecem com o mesmo comportamento.
 
-## v0.5.3 — sprites de corrida sem fragmentos
+## v0.5.2 — sprites de corrida sem fragmentos
 - Os **8 PNGs da corrida** foram extraídos novamente da folha original `sprite_de_corrida_do_guerreiro_lupino.png`.
 - Os personagens foram separados por componentes conectados das silhuetas, em vez de cortes retangulares que atravessavam o sprite vizinho.
 - Removemos mãos, cabeças, pés e fragmentos de cauda que apareciam indevidamente nos quadros próximos.
@@ -53,7 +53,3 @@ Abra `http://localhost:4173`. `npm run build` compila o código e copia a biblio
 - As animações de **caminhada, salto e ataque**, assim como o cenário, não tiveram seus arquivos modificados.
 - Correção aplicada a **ambos** os modos de jogo, Phaser e Canvas offline, porque usam os mesmos PNGs corrigidos.
 - Teste de regressão audita 8 PNGs da corrida e verifica que cada imagem contém apenas uma silhueta contínua, sem cortes laterais ou pedaços soltos.
-
-
-## Corrida
-A corrida agora usa 6 quadros na sequência 6-7-8-3-1-5 da spritesheet anterior.

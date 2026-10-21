@@ -14,7 +14,7 @@ export function advanceHorizontal(state: MotionState, input: MotionInput, deltaS
 }
 export function frameForGround(traveled: number, running: boolean): number {
  const pixelsPerFrame=running?36:24;
- return Math.floor(Math.max(0,traveled)/pixelsPerFrame)%(running?6:8);
+ return Math.floor(Math.max(0,traveled)/pixelsPerFrame)%8;
 }
 export function jumpFrame(velocityY: number): number {return velocityY< -660?1:velocityY< -240?2:velocityY<300?3:velocityY<720?4:5;}
 export function attackFrame(elapsedMs: number): number {return Math.min(11,Math.max(0,Math.floor(elapsedMs/MOVEMENT.attackMilliseconds*12)));}

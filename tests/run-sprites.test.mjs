@@ -60,7 +60,7 @@ function connectedSizes(image){
 }
 
 test('sprites da corrida não contêm elementos de poses vizinhas ou laterais cortadas',()=>{
-  for(let i=0;i<6;i++){
+  for(let i=0;i<8;i++){
     const path=`assets/joca_run_${String(i).padStart(2,'0')}.png`;
     const im=alphaFromPNG(path);
     assert.equal(im.width,600,`largura: ${path}`);
@@ -76,12 +76,4 @@ test('sprites da corrida não contêm elementos de poses vizinhas ou laterais co
     assert.equal(left,0,`fragmento encostado na borda esquerda: ${path}`);
     assert.equal(right,0,`sprite cortado na borda direita: ${path}`);
   }
-});
-
-
-test('manifesto e runtime usam corrida com 6 quadros',()=>{
-  const manifest=fs.readFileSync('src/phaser/manifest.ts','utf8');
-  assert.match(manifest,/length:6/);
-  const offline=fs.readFileSync('runtime/offline-game.js','utf8');
-  assert.match(offline,/%6/);
 });
