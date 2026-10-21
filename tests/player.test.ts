@@ -1,5 +1,5 @@
 import {describe,it,expect} from 'vitest';
-import {MOVE,WORLD,ART} from '../src/config';
+import {MOVE,WORLD} from '../src/config';
 import {createPlayer,stepPlayer,stopPlayer,type PlayerState,type Direction} from '../src/player';
 import {SEAM_START,resolveGaitPose} from '../src/gait';
 function advance(initial:PlayerState,dir:Direction,seconds:number){
@@ -7,7 +7,7 @@ function advance(initial:PlayerState,dir:Direction,seconds:number){
  for(let i=0;i<Math.round(seconds/MOVE.fixedStep);i++)p=stepPlayer(p,dir,MOVE.fixedStep);
  return p;
 }
-describe('movement regression — JOCA 0.3.11',()=>{
+describe('movement regression — JOCA 0.3.9',()=>{
  it('starts in an idle-compatible pose',()=>{expect(createPlayer()).toMatchObject({x:180,velocity:0,facing:1,phase:1/8,moving:false});});
  it('moves in either direction at no more than 210px/s',()=>{
   for(const dir of [-1,1] as Direction[]){const p=advance({...createPlayer(),x:2000},dir,1);expect((p.x-2000)*dir).toBeGreaterThan(150);expect(Math.abs(p.velocity)).toBeLessThanOrEqual(MOVE.speed);expect(p.facing).toBe(dir);}
@@ -35,7 +35,7 @@ describe('movement regression — JOCA 0.3.11',()=>{
  it('ignores invalid steps',()=>{const p=createPlayer();for(const d of [0,-1,NaN,Infinity])expect(stepPlayer(p,1,d)).toEqual(p);});
 });
 
-describe('walking seam — JOCA 0.3.11',()=>{
+describe('walking seam — JOCA 0.3.9',()=>{
  it('maintains original 8 poses without blending before seam',()=>{
   for(let i=0;i<7;i++)expect(resolveGaitPose((i+.4)/8,true)).toMatchObject({frame:i,blend:0});
  });
@@ -45,11 +45,5 @@ describe('walking seam — JOCA 0.3.11',()=>{
   expect(p.blend).toBeLessThan(1);
   expect(resolveGaitPose(1-1e-8,true).blend).toBeGreaterThan(.999999);
   expect(resolveGaitPose(0,true).frame).toBe(0);
- });
-});
-
-describe('walk visual regression — v0.3.11',()=>{
- it('uses a single consistent vertical ground anchor for all eight poses',()=>{
-  expect(new Set(ART.frameBottoms).size).toBe(1);
  });
 });

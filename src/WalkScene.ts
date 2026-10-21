@@ -39,7 +39,7 @@ export class WalkScene extends Phaser.Scene {
   if(new URLSearchParams(location.search).has('test') || (window as Window & {__JOCA_TEST_MODE__?:boolean}).__JOCA_TEST_MODE__){
    Object.assign(window,{__JOCA__:{
     snapshot:()=>({...this.player,frame:this.visual.currentFrame,cameraX:this.cameras.main.scrollX,
-     version:VERSION,ready:this.ready,textureReady:this.textures.exists('joca'),seamOpacity:this.visual.seamOpacity,visualY:this.visual.visualY}),
+     version:VERSION,ready:this.ready,textureReady:this.textures.exists('joca'),seamOpacity:this.visual.seamOpacity}),
     reset:()=>this.reset(),
    }});
   }

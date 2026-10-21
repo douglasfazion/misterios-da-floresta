@@ -1,14 +1,11 @@
-# Arte — JOCA v0.3.11
+# Arte e animação — JOCA v0.3.9
 
-Referência de identidade: Joca humano-lupino aprovado na v0.3.3. A composição do atlas de caminhada parte dos desenhos presentes na v0.3.10. **Não houve geração nem substituição de personagens nesta versão.** Apenas posicionamos melhor os mesmos oito desenhos dentro de suas células.
+**Fonte visual jogável:** atlas corrigido em `art-source/v0.3.9-walk-generated/joca-walk.png`, copiado para `public/assets/joca-walk.png` e `dist/assets/joca-walk.png`.
 
-## Método aplicado
-
-Atlas de 1536 × 1024 px, 4 × 2 poses, células de 384 × 512 px. Os quatro primeiros quadros permaneceram intactos. Deslocamentos em pixels nos quatro últimos quadros: [56, 58, 59, 60] para baixo, sem interpolação de pixels.
-
-Com critério alpha ≥128, os extremos dos desenhos por pose ficaram:
-
-- Topo/cabeça (Y, na célula): `[105,105,104,106,103,104,102,103]` → variação **4 px**;
-- Base/pé (Y, na célula): `[508,510,509,507,509,509,509,509]` → variação **3 px**.
-
-A âncora em Y no Phaser não muda ao trocar de pose. Isso elimina os saltos causados por erros de registro da imagem, sem introduzir uma oscilação artificial. O arquivo original e os offsets estão em `art-source/v0.3.11-source/`.
+- PNG RGBA 1536 × 1024; 8 poses em 4 colunas × 2 linhas; cada célula tem 384 × 512 px.
+- A identidade aprovada do Joca foi mantida: forma humano-lupina, cabelo escuro, orelhas, cauda, faixas vermelhas, adereços e estilo 2D ilustrado sombrio.
+- O novo atlas corrige a leitura da caminhada, principalmente braços e mãos, e melhora a progressão entre poses.
+- Direção do desenho voltada à direita, invertida no Phaser quando anda à esquerda.
+- A progressão de quadros depende apenas da distância percorrida, não do tempo isolado.
+- A emenda final 8→1 recebe uma breve sobreposição; as demais transições exibem os quadros de forma direta para preservar nitidez.
+- `npm run verify:art` confirma que o atlas embarcado é idêntico ao atlas corrigido salvo em `art-source/v0.3.9-walk-generated/`.

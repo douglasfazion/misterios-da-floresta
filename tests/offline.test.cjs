@@ -99,10 +99,3 @@ test('standing keeps original idle art with no overlay',()=>{
   assert.equal(p.frame,1);assert.equal(p.blend,0);
  }
 });
-
-test('all eight atlas poses have a shared ground anchor',()=>{
- const {ART}=require('../.test-build/config.js');
- assert.equal(ART.frames,8);
- assert.equal(new Set(ART.frameBottoms).size,1,
-  'the render anchor must not introduce per-frame vertical jumps');
-});

@@ -34,4 +34,4 @@ const standalone=source.replace('<link rel="stylesheet" href="/style.css">',`<st
  `<script>${embed(loader)}</script>`+
  `<script>${embed(app)}</script>`);
 await writeFile(root+'/JOGAR.html',standalone);
-console.log('JOCA 0.3.11: TypeScript compilado; dist/index.html e JOGAR.html criados.');
+console.log('JOCA 0.3.9: TypeScript compilado; dist/index.html e JOGAR.html criados.');

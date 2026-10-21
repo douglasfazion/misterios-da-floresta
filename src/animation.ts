@@ -1,14 +1,13 @@
 import {ART,WORLD} from './config';
 import {resolveGaitPose} from './gait';
 import type {PlayerState} from './player';
-/** Animation is grounded at a stable world Y. The artwork is frame-aligned. */
+/** Presentation only: gait follows distance using the corrected v0.3.9 walk sheet. */
 export class PlayerVisual {
  private sprite:any;
  private seamSprite:any;
  private shadow:any;
  public currentFrame:number=ART.idleFrame;
  public seamOpacity=0;
- public visualY=WORLD.ground;
  constructor(scene:any){
   this.shadow=scene.add.ellipse(0,WORLD.ground+3,68,10,0x000000,.38);
   const originX=ART.anchorX/ART.frameWidth;
@@ -28,15 +27,12 @@ export class PlayerVisual {
   const scale=ART.height/(ART.footY-65);
   this.sprite.setX(player.x).setFlipX(player.facing<0);
   this.sprite.setFrame(pose.frame);
-  // A single world-space foot anchor for all eight normalized poses.
-  // Never shift the player vertically at frame boundaries.
-  this.sprite.setY(WORLD.ground);
-  this.visualY=this.sprite.y;
+  this.sprite.setY(WORLD.ground+(ART.footY-ART.frameBottoms[pose.frame])*scale);
   if(pose.blend>0){
    this.sprite.setAlpha(1-pose.blend);
    this.seamSprite.setVisible(true).setAlpha(pose.blend)
     .setFrame(pose.nextFrame).setX(player.x).setFlipX(player.facing<0)
-    .setY(WORLD.ground);
+    .setY(WORLD.ground+(ART.footY-ART.frameBottoms[pose.nextFrame])*scale);
   }else{
    this.sprite.setAlpha(1);
    this.seamSprite.setVisible(false).setAlpha(0);

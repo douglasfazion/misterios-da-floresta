@@ -1,18 +1,24 @@
-# Decisões — JOCA v0.3.11
+# Decisões e pendências — JOCA v0.3.9
 
-## Preservado
+## Aprovado
 
-- Tecnologia Phaser 3.90 + TypeScript do projeto existente.
-- Identidade visual original de Joca humano-lupino, ambiente e controles atuais.
-- Escopo de apenas corrigir a caminhada, sem novas ações, cenários ou inimigos.
-- ZIP versionado e restauração de entregas anteriores.
+- Tipo: metroidvania 2D Web, com desenvolvimento incremental e versionado.
+- Tecnologia: TypeScript + Phaser.
+- Base visual obrigatória: identidade aprovada do Joca parcialmente lupino.
+- Escopo atual: resolver a caminhada antes de avançar para outras mecânicas.
+- Entregar somente ZIPs com numeração de versão.
 
-## Alteração executada
+## Implementado nesta versão
 
-- Normalização do conteúdo dos oito quadros do atlas. Não é uma correção de física: foi um problema de posições dentro da spritesheet anterior.
-- Âncora visual única e imóvel durante a sequência.
-- Critérios mensuráveis de estabilidade incluídos em script de QA.
+- Como a suavização por código não foi suficiente para deixar a caminhada plenamente natural, a animação passou a usar um **novo atlas de caminhada** consistente com a identidade aprovada.
+- O sistema de caminhada permanece guiado por distância real percorrida.
+- A suavização visual ficou restrita novamente à emenda 8→1, para não borrar braços e mãos entre todas as poses.
 
-## Pendente
+## Pendência
 
-- Teste e aprovação visual do jogador. Se restar oscilação indesejada dos braços, pernas ou corpo, será corrigida nesta iteração antes de implementar novos recursos.
+- Falta sua avaliação jogável da fluidez final da caminhada. Se ainda houver problema, continuaremos nesta mesma iteração em vez de abrir escopo novo.
+
+## Preservação
+
+- O atlas jogável atual está salvo em `art-source/v0.3.9-walk-generated/`.
+- As versões anteriores permanecem recuperáveis em `history/`.
