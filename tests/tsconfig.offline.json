@@ -1,5 +1,5 @@
 {
  "extends":"../tsconfig.json",
  "compilerOptions":{"target":"ES2022","module":"CommonJS","moduleResolution":"Node","rootDir":"../src","outDir":"../.test-build","noEmit":false,"types":[]},
- "include":["../src/config.ts","../src/player.ts","../src/gait.ts"]
+ "include":["../src/config.ts","../src/player.ts","../src/rig.ts"]
 }

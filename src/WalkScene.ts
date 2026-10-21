@@ -39,7 +39,7 @@ export class WalkScene extends Phaser.Scene {
   if(new URLSearchParams(location.search).has('test') || (window as Window & {__JOCA_TEST_MODE__?:boolean}).__JOCA_TEST_MODE__){
    Object.assign(window,{__JOCA__:{
     snapshot:()=>({...this.player,frame:this.visual.currentFrame,cameraX:this.cameras.main.scrollX,
-     version:VERSION,ready:this.ready,textureReady:this.textures.exists('joca'),seamOpacity:this.visual.seamOpacity,visualY:this.visual.visualY,...this.visual.snapshot()}),
+     version:VERSION,ready:this.ready,textureReady:this.textures.exists('rig-torso'),seamOpacity:this.visual.seamOpacity,visualY:this.visual.visualY,...this.visual.snapshot()}),
     reset:()=>this.reset(),
    }});
   }
@@ -59,6 +59,6 @@ export class WalkScene extends Phaser.Scene {
   }
   this.visual.update(this.player);
   updateCamera(this.cameras.main,this.player.x,Math.min(delta/1000,.1));
-  document.querySelector('#status')!.textContent=`${this.player.moving?'Caminhando':'Parado'} · ${Math.round(Math.abs(this.player.velocity))} px/s · pose ${this.visual.currentFrame+1}/12 · spritesheet`;
+  document.querySelector('#status')!.textContent=`${this.player.moving?'Caminhando':'Parado'} · ${Math.round(Math.abs(this.player.velocity))} px/s · ciclo ${this.visual.currentFrame+1}/8 · articulado`;
  }
 }

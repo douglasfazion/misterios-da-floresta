@@ -1,37 +1,36 @@
-# JOCA v0.3.13 — Caminhada de 12 quadros, integrada ao Phaser
+# JOCA v0.3.12 — caminhada 2D articulada (prévia jogável)
 
-**Status:** compilada e validada tecnicamente; a naturalidade visual ainda depende da avaliação de quem joga.
+Esta versão implementa uma nova abordagem para a caminhada de Joca **dentro do Phaser**, mantendo o código, a câmera, a velocidade, o terreno e os controles do protótipo Web anterior.
 
-## Jogar no Windows, Chrome ou Edge
+## Testar imediatamente
 
-1. Extraia o ZIP completo.
-2. Abra a pasta `joca-v0.3.13` e clique duas vezes em `JOGAR.html`.
-3. Clique dentro da área do jogo para focar o teclado.
-4. Caminhe usando **A / D** ou **← / →**. Reinicie com **R** ou o botão da tela.
+1. Extraia todo o ZIP e abra a pasta `joca-v0.3.12`.
+2. Abra `JOGAR.html` no Chrome ou Edge. O arquivo inclui motor, código e imagens; não é necessário instalar ferramentas nem ter internet.
+3. Clique no jogo. Use **A/D** ou **←/→** para caminhar. Pressione **R** para reiniciar.
+4. Teste vários ciclos seguidos **nos dois sentidos**. Observe o avanço alternado dos pés, flexão dos joelhos, balanço dos braços, estabilidade vertical do tronco e junções do desenho.
 
-`JOGAR.html` contém Phaser, JavaScript e os quatro assets ativos embutidos. Pode ser aberto sem Internet. O arquivo também foi executado no Chromium por meio de conteúdo autocontido; neste ambiente não há garantia de teste direto via URL `file://`.
+## O que mudou
 
-## Alteração focal desta versão
+- **Não usa mais os oito corpos inteiros para simular a caminhada.** O Joca agora é um conjunto de **13 texturas RGBA**, recortadas do **primeiro quadro do spritesheet aprovado da v0.3.3**. Nenhuma versão visual improvisada foi adotada.
+- Ombros, cotovelos, quadris e joelhos são articulados. Posição dos tornozelos calculada conforme a fase da passada, com flexão das pernas por cinemática inversa 2D.
+- Braços oscilam em oposição às pernas, com flexão leve dos antebraços; a cauda acompanha discretamente a cadência.
+- A fase é vinculada à distância percorrida, enquanto a intensidade da animação se ajusta à velocidade.
+- O tronco permanece na mesma coordenada vertical do jogo. Cada passada alterna um pé apoiado e outro elevado. Não há efeitos de dissolução entre imagens de corpo inteiro.
+- Colisão, câmera, controles, cenário e limites permaneceram inalterados.
 
-A caminhada **não usa mais o sistema articulado da v0.3.12**. Foi adotada a folha de **12 quadros completos** fornecida na conversa, preservando a aparência do personagem, o cenário existente e os controles/física. A fonte está em `art-source/v0.3.13-walk/walk-input.png`.
+**Limitação visual:** recortar uma ilustração pronta em juntas pode deixar emendas sutis na transição de braços e pernas. O novo movimento foi testado no navegador, mas a qualidade artística final — sobretudo apoio realista dos pés, continuidade dos recortes e peso — continua pendente da sua aprovação. Esta versão é um **teste jogável**, não a animação final garantida.
 
-Os quadros foram recortados, registrados por um ponto estável no tronco e alinhados pela altura visual de contato dos pés. O atlas preparado está em `public/assets/joca-walk.png` e possui grade **4×3, 448×420 px por quadro**. O script `scripts/prepare-walk.py` reproduz exatamente este preparo, sem redesenhar anatomia.
+## Estrutura e comandos
 
-A animação é avançada de acordo com a **distância real percorrida** (12 poses a cada 168 px); a velocidade máxima do jogador permanece **210 px/s**. Não há interpolação de imagens, braços por camadas, distorções ou efeitos de sobreposição que possam criar silhuetas duplas.
+- `src/rig.ts` — cinemática, fase da passada, contramovimento dos braços (regra testável sem Phaser).
+- `src/animation.ts` — renderizador articulado no Phaser; `src/rigParts.ts` — metadados das peças.
+- `art-source/v0.3.3-original/` — spritesheet original preservado.
+- `art-source/v0.3.12-rig/` e `public/assets/rig/` — 13 recortes e pontos de articulação.
+- `JOGAR.html` — jogo Web autossuficiente; `dist/` — versão Web servível.
+- `tests/` — testes de movimento, cinemática e navegador.
+- `history/` — versões anteriores recuperáveis.
 
-## Como desenvolver
-
-Recomendados Node.js e Python 3 com Pillow/NumPy apenas para reproduzir a preparação visual:
-
-```sh
-npm ci
-npm run dev
-npm run test
-npm run build
-npm run test:e2e
-```
-
-Para a compilação offline a partir dos arquivos já disponíveis:
+Com Node.js e TypeScript instalados:
 
 ```sh
 npm run verify:art
@@ -39,19 +38,4 @@ npm run test:offline
 npm run build:offline
 ```
 
-O servidor local simples é `node server.mjs`. O diretório `dist/` contém a versão Web para servidor; `JOGAR.html` é a versão autocontida para abrir diretamente.
-
-## Estrutura
-
-- `src/`: motor Phaser, carregamento do atlas, animador, cenas, controle e regras de deslocamento.
-- `public/assets/joca-walk.png`: atlas **ativo** no jogo.
-- `art-source/v0.3.13-walk/`: arquivo recebido e manifest do registro dos frames.
-- `scripts/prepare-walk.py`: preparação reprodutível do atlas.
-- `tests/` e `docs/`: testes de regressão, decisões e limitações.
-- `history/`: pacotes anteriores para recuperação.
-
-## Limitações conhecidas
-
-- A folha recebida contém poses próximas entre si em algumas posições e detalhes do desenho que podem variar entre quadros. O tratamento não redesenhou músculos, mãos ou pernas. A qualidade artística ainda precisa de inspeção em movimento.
-- A pose parada ainda reaproveita um dos quadros da caminhada; idle dedicado ficará para outra iteração, somente após aprovação.
-- Não foram adicionados salto, corrida, ataque ou novas salas.
+Com as dependências npm instaladas (`npm ci`), também há `npm run dev`, `npm run test`, `npm run build` e `npm run test:e2e`. O ZIP já inclui o HTML jogável compilado, sem necessidade desses comandos.

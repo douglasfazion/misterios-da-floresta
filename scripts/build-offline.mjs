@@ -3,11 +3,14 @@ import {readFile,writeFile,mkdir,rm,copyFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 const root=resolve(import.meta.dirname,'..');
 const dist=root+'/dist';
+const rigNames=['tail','rear_upper_arm','rear_forearm','near_upper_arm','near_forearm','rear_thigh','rear_calf','rear_foot','near_thigh','near_calf','near_foot','torso','cloth'];
 await rm(dist,{recursive:true,force:true});
-await mkdir(dist+'/vendor',{recursive:true});await mkdir(dist+'/assets',{recursive:true});
-execFileSync('tsc',['-p','tsconfig.offline.json'],{cwd:root,stdio:'inherit'});
-const assetNames=['bg_waterfall.jpg','stone.png','moss.png','joca-walk.png'];
-for(const name of assetNames)await copyFile(root+'/public/assets/'+name,dist+'/assets/'+name);
+await mkdir(dist+'/vendor',{recursive:true});await mkdir(dist+'/assets',{recursive:true});await mkdir(dist+'/assets/rig',{recursive:true});
+try{
+ execFileSync('tsc',['-p','tsconfig.offline.json'],{cwd:root,stdio:'inherit'});
+}catch(error){console.error('Install TypeScript or use npm run build with the normal dependencies.');throw error;}
+for(const f of ['bg_waterfall.jpg','stone.png','moss.png','joca-walk.png',...rigNames.map(n=>'rig/'+n+'.png')])
+ await copyFile(root+'/public/assets/'+f,dist+'/assets/'+f);
 const vendor=await readFile(root+'/public/vendor/phaser-runtime.js','utf8');
 const loader=await readFile(root+'/scripts/amd-loader.js','utf8');
 const app=await readFile(dist+'/app.js','utf8');
@@ -20,13 +23,16 @@ const clean=source.replace(/<link rel="stylesheet" href="\/style.css">/,'<link r
  .replace(/<script src="\/vendor\/phaser-runtime.js"><\/script><script type="module" src="\/src\/main.ts"><\/script>/,
  '<script src="vendor/phaser-runtime.js"></script><script src="amd-loader.js"></script><script src="app.js"></script>');
 await writeFile(dist+'/index.html',clean);
+const assetNames=['bg_waterfall.jpg','stone.png','moss.png','joca-walk.png',...rigNames.map(n=>'rig/'+n+'.png')];
 const embedded={};
 for(const name of assetNames)embedded[name]='data:image/'+(name.endsWith('.jpg')?'jpeg':'png')+';base64,'+
  (await readFile(dist+'/assets/'+name)).toString('base64');
-const embed=v=>v.replace(/<\/script/gi,'<\\/script');
+const embed=(v)=>v.replace(/<\/script/gi,'<\\/script');
 const standalone=source.replace('<link rel="stylesheet" href="/style.css">',`<style>${css}</style>`)
  .replace(/<script src="\/vendor\/phaser-runtime.js"><\/script><script type="module" src="\/src\/main.ts"><\/script>/,
  `<script>window.__JOCA_ASSETS__=${JSON.stringify(embedded)};</script>`+
- `<script>${embed(vendor)}</script>`+`<script>${embed(loader)}</script>`+`<script>${embed(app)}</script>`);
+ `<script>${embed(vendor)}</script>`+
+ `<script>${embed(loader)}</script>`+
+ `<script>${embed(app)}</script>`);
 await writeFile(root+'/JOGAR.html',standalone);
-console.log('JOCA v0.3.13 offline build: dist/ and standalone JOGAR.html generated');
+console.log('JOCA 0.3.12: TypeScript compilado; dist/index.html e JOGAR.html criados.');

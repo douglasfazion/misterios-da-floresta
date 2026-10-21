@@ -1,12 +1,9 @@
-# Arte — JOCA v0.3.13
+# Identidade visual e recortes — v0.3.12
 
-## Fontes e atlas
+A arte aprovada do **JOCA v0.3.3** é a fonte de todos os recortes. A versão jogável não usa arte redesenhada, novos acessórios nem um personagem substituto.
 
-- `art-source/v0.3.13-walk/walk-input.png`: PNG original de 1448×1086, 4×3, 12 poses, fornecido pelo usuário nesta conversa.
-- `public/assets/joca-walk.png`: grade reempacotada de 1792×1260, 4×3, células de 448×420.
-- `art-source/v0.3.13-walk/registration.json`: deslocamento de cada pose usado para padronizar contato e registro horizontal do tronco.
-- `scripts/prepare-walk.py`: código para reproduzir o empacotamento sem redesenhos.
+Em `art-source/v0.3.12-rig/` existem 13 PNGs com fundo transparente: tronco, faixa da cintura, cauda, braço distante (duas partes), braço próximo (duas partes), perna distante (coxa, canela e pé) e perna próxima (coxa, canela e pé). `rig.json` guarda as coordenadas de origem e pivôs em pixels da fonte de 384×512 px. O runtime usa metadados em `src/rigParts.ts`.
 
-A normalização preserva os pixels de cada pose. A linha inferior opaca está em Y=390 dentro de cada célula. O topo da cabeça fica entre 37 e 42 px, após normalização. Não há geração de quadros intermediários nem sobreposição no Phaser.
+A cópia jogável está em `public/assets/rig/`. O renderizador conserva o corpo numa altura estável, posiciona os tornozelos calculados e movimenta as articulações com cinemática inversa. Detalhes mais exigentes como ajuste de oclusão, acabamento de juntas, inércia secundária de cabelo e roupa e correção de eventuais deslizamentos residuais deverão ser aprovados separadamente.
 
-**Atenção:** equalizar o encaixe elimina saltos artificiais causados pela disposição da arte na folha, mas não comprova que as pernas alternem anatomicamente de maneira perfeita nem que os pés não escorreguem em pixel space. Estas propriedades continuam sujeitas a aprovação visual.
+`npm run verify:art` confere as 13 imagens jogáveis com suas fontes por SHA-256, além de conferir a dimensão do spritesheet histórico.

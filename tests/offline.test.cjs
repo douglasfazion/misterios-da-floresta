@@ -1,71 +1,84 @@
 const test=require('node:test');
 const assert=require('node:assert/strict');
 const {createPlayer,stepPlayer,stopPlayer}=require('../.test-build/player.js');
-const {MOVE,WORLD,ART}=require('../.test-build/config.js');
-const {frameForPhase}=require('../.test-build/gait.js');
-const tick=(start,dir,seconds)=>{
- let state=start;
- for(let i=0;i<Math.round(seconds/MOVE.fixedStep);i++)state=stepPlayer(state,dir,MOVE.fixedStep);
- return state;
+const {MOVE,WORLD}=require('../.test-build/config.js');
+const {resolveRig,JOINTS}=require('../.test-build/rig.js');
+const tick=(state,dir,seconds)=>{
+ let p=state;
+ for(let i=0;i<Math.round(seconds/MOVE.fixedStep);i++)p=stepPlayer(p,dir,MOVE.fixedStep);
+ return p;
 };
-test('approved locomotion constants and spawn remain unchanged',()=>{
- assert.equal(WORLD.startX,180);assert.equal(MOVE.speed,210);
- assert.equal(MOVE.stride,168);assert.equal(MOVE.fixedStep,1/120);
- assert.equal(createPlayer().velocity,0);
-});
-test('walking left/right moves within original speed cap',()=>{
+function close(a,b,tol=1e-4){assert.ok(Math.abs(a-b)<tol,`${a} != ${b}`);}
+test('spawn and walking move exactly as last playable',()=>{
+ const p=createPlayer();assert.equal(p.x,WORLD.startX);assert.equal(p.velocity,0);
  for(const dir of [-1,1]){
-  const p=tick({...createPlayer(),x:2000},dir,1);
-  assert.ok((p.x-2000)*dir>150);
-  assert.ok(Math.abs(p.velocity)<=MOVE.speed+1e-8);
-  assert.equal(p.facing,dir);
+  const q=tick({...p,x:2000},dir,1);
+  assert.ok((q.x-2000)*dir>150);
+  assert.ok(Math.abs(q.velocity)<=MOVE.speed+.00001);
+  assert.equal(q.facing,dir);
  }
 });
-test('release decelerates and reaches full stop',()=>{
- const p=tick(createPlayer(),1,.7);
+test('stopping, reversing, blur and world bounds keep approved physics',()=>{
+ const p=tick(createPlayer(),1,1);
  const braking=tick(p,0,.1);
  assert.ok(braking.velocity>0&&braking.velocity<p.velocity);
- const stopped=tick(braking,0,1);
- assert.equal(stopped.velocity,0);
- assert.equal(tick(stopped,0,1).x,stopped.x);
-});
-test('direction reversal follows actual physical displacement',()=>{
- const p=tick(createPlayer(),1,1);
+ assert.equal(tick(braking,0,1).velocity,0);
  assert.equal(stepPlayer(p,-1,MOVE.fixedStep).facing,1);
- assert.equal(tick(p,-1,.4).facing,-1);
+ assert.equal(tick(p,-1,.5).facing,-1);
+ const halted=stopPlayer(p);assert.equal(halted.velocity,0);assert.equal(halted.x,p.x);
+ const wall=tick({...p,x:WORLD.maxX-2},1,1);
+ assert.equal(wall.x,WORLD.maxX);assert.equal(wall.velocity,0);
 });
-test('level bounds block movement and preserve phase',()=>{
- const at=tick({...createPlayer(),x:WORLD.maxX-5},1,2);
- assert.equal(at.x,WORLD.maxX);
- const again=tick(at,1,.5);
- assert.equal(again.distance,at.distance);assert.equal(again.phase,at.phase);
- const left=tick({...createPlayer(),x:WORLD.minX+5},-1,2);
- assert.equal(left.x,WORLD.minX);
-});
-test('focus loss stops immediately without moving player',()=>{
- const p=tick(createPlayer(),1,.4);
- const stopped=stopPlayer(p);
- assert.equal(stopped.x,p.x);assert.equal(stopped.velocity,0);assert.equal(stopped.moving,false);
-});
-test('determinism and invalid time guards remain intact',()=>{
+test('fixed timestep is deterministic; invalid dt ignored',()=>{
  const p=createPlayer();assert.deepEqual(tick(p,1,.5),tick(p,1,.5));
- for(const dt of [0,-1,NaN,Infinity])assert.deepEqual(stepPlayer(p,1,dt),p);
+ for(const dt of [NaN,Infinity,0,-1])assert.deepEqual(stepPlayer(p,1,dt),p);
 });
-test('approved 12-frame layout is used at every discrete phase',()=>{
- assert.equal(ART.frames,12);assert.equal(ART.frameWidth,448);assert.equal(ART.frameHeight,420);
- for(let i=0;i<12;i++)assert.equal(frameForPhase((i+.5)/12,true),i);
+test('both legs take a real stride and bend at both knees',()=>{
+ const ankleXNear=new Set(),ankleXRear=new Set(),kneeXNear=new Set(),kneeXRear=new Set();
+ for(let i=0;i<96;i++){
+  const q=resolveRig(i/96,MOVE.speed);
+  ankleXNear.add(q.nearLeg.ankle.x.toFixed(2));ankleXRear.add(q.rearLeg.ankle.x.toFixed(2));
+  kneeXNear.add(q.nearLeg.knee.x.toFixed(2));kneeXRear.add(q.rearLeg.knee.x.toFixed(2));
+ }
+ for(const set of [ankleXNear,ankleXRear,kneeXNear,kneeXRear])assert.ok(set.size>16);
 });
-test('loop 11→0 wraps cyclically with no duplicate pause',()=>{
- assert.equal(frameForPhase(1-1e-9,true),11);
- assert.equal(frameForPhase(1,true),0);
- assert.equal(frameForPhase(0,true),0);
- assert.equal(frameForPhase(2+1/12,true),1);
+test('both arms swing in opposite directions with active elbow motion',()=>{
+ const p1=resolveRig(.25,MOVE.speed),p2=resolveRig(.75,MOVE.speed);
+ assert.ok(Math.abs(p1.nearArm.wrist.x-p2.nearArm.wrist.x)>35);
+ assert.ok(Math.abs(p1.rearArm.wrist.x-p2.rearArm.wrist.x)>35);
+ assert.ok(Math.abs(p1.nearArm.upperAngle-p2.nearArm.upperAngle)>.65);
+ assert.ok(Math.abs(p1.rearArm.upperAngle-p2.rearArm.upperAngle)>.65);
+ assert.ok(Math.abs(p1.nearArm.lowerAngle-p2.nearArm.lowerAngle)>.65);
 });
-test('standing uses same fixed reference pose without joint animation',()=>{
- for(const phase of [0,.2,.8,1,NaN,Infinity])assert.equal(frameForPhase(phase,false),ART.idleFrame);
+test('planted feet have fixed y; only swinging foot rises',()=>{
+ for(let i=1;i<64;i++){
+  const q=resolveRig(i/64,MOVE.speed),s=Math.sin(2*Math.PI*i/64);
+  if(s>1e-8){close(q.nearLeg.ankle.y,JOINTS.nearLeg.ankle.y);assert.ok(q.rearLeg.ankle.y<JOINTS.rearLeg.ankle.y);}
+  else if(s< -1e-8){close(q.rearLeg.ankle.y,JOINTS.rearLeg.ankle.y);assert.ok(q.nearLeg.ankle.y<JOINTS.nearLeg.ankle.y);}
+ }
 });
-test('walk phase continues to be proportional to actual distance',()=>{
- const p=stepPlayer({...createPlayer(),x:WORLD.maxX-1,velocity:MOVE.speed},1,MOVE.fixedStep);
- assert.equal(p.distance,1);
- assert.ok(Math.abs(p.phase-(1/8+1/MOVE.stride))<1e-9);
+test('rig is cyclically continuous at end of gait (including elbows and feet)',()=>{
+ const a=resolveRig(1-1e-7,MOVE.speed),b=resolveRig(0,MOVE.speed);
+ for(const pair of [[a.nearLeg.ankle,b.nearLeg.ankle],[a.rearLeg.ankle,b.rearLeg.ankle],[a.nearLeg.knee,b.nearLeg.knee],[a.rearLeg.knee,b.rearLeg.knee],
+                   [a.nearArm.wrist,b.nearArm.wrist],[a.rearArm.wrist,b.rearArm.wrist]]){
+  close(pair[0].x,pair[1].x,.01);close(pair[0].y,pair[1].y,.01);
+ }
+});
+test('rig settles back to original joint reference when stopped',()=>{
+ for(const phase of [0,.13,.5,.83,1]){
+  const q=resolveRig(phase,0);
+  close(q.nearLeg.ankle.x,JOINTS.nearLeg.ankle.x);
+  close(q.rearLeg.ankle.x,JOINTS.rearLeg.ankle.x);
+  close(q.nearArm.wrist.x,JOINTS.nearArm.wrist.x);
+  close(q.rearArm.wrist.x,JOINTS.rearArm.wrist.x);
+ }
+});
+test('IK lengths of foreleg segments preserve joint geometry',()=>{
+ const q=resolveRig(.35,MOVE.speed);
+ for(const k of ['nearLeg','rearLeg']){
+  const ref=JOINTS[k],pose=q[k];
+  const hyp=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+  close(hyp(ref.hip,ref.knee),hyp(pose.upper,pose.knee),.01);
+  close(hyp(ref.knee,ref.ankle),hyp(pose.knee,pose.ankle),.01);
+ }
 });
