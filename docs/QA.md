@@ -1,28 +1,31 @@
-# QA — JOCA v0.3.12
+# QA — JOCA v0.3.11
 
-## Critérios de regressão
+## Inspeção dos frames
 
-- Sem mudança nos valores aprovados de velocidade, aceleração, frenagem e limites.
-- Duas pernas e dois braços respondem ao ciclo; joelhos e cotovelos movimentam-se.
-- Contato do tornozelo no apoio permanece na altura nominal; o outro pé levanta.
-- Tronco estável na coordenada de chão; ciclo contínuo na passagem de fase 1→0.
-- Compilação Web offline e carregamento das 13 partes da identidade visual original.
-- Comandos, câmera, perda de foco e reset continuam funcionando.
+`python3 scripts/check-visual-grounding.py` (precisa Pillow) compara a translação dos 8 quadros pixel a pixel com o atlas de origem e mede a dispersão vertical de topo e base por quadro. Resultados: cabeça 4 px, pés 3 px, nenhuma alteração de traço, cor, textura ou escala.
 
-## Como testar
+## Testes executáveis
 
-- `npm run verify:art` — integridade dos recortes e origem aprovada.
-- `npm run test:offline` — testes unitários determinísticos (`node --test`).
-- `npm run build:offline` — compila os módulos e recria `dist/` e `JOGAR.html`.
-- `npm run test` e `npm run test:e2e` — suíte Vitest/Playwright, após `npm ci`.
+`npm run verify:art`: confere o SHA-256 e o formato do PNG normalizado.
 
-A inspeção humana dentro do jogo permanece obrigatória. O modelo rígido recortado não oferece garantia automática de continuidade perfeita das juntas e deslizamento nulo.
+`npm run test:offline`: testes automatizados em Node para velocidade, direção, frenagem, limites, determinismo, progresso por distância e transição cíclica.
 
-## Resultados verificados nesta entrega
+`npm run build:offline`: gera o jogo Phaser standalone em `JOGAR.html` e a Web build em `dist/`.
 
-- `npm run verify:art` — passou. Origem v0.3.3 confirmada; 13/13 texturas iguais às fontes de arte por SHA-256.
-- `npm run test:offline` — **9/9 testes passaram**, incluindo movimento de braços e pernas, apoio dos pés e fechamento do ciclo.
-- `npm run build:offline` — compilação TypeScript, `dist/` e `JOGAR.html` gerados.
-- **Chromium headless com Python Playwright**, executando o conteúdo autocontido de `JOGAR.html`: carregamento das 13 peças, caminhada direita/esquerda, animação dos dois braços e joelhos, apoio e avanço dos pés, altura do tronco fixa, parada, reinício e liberação ao perder foco. Nenhum erro JavaScript ou acesso HTTP externo observado.
-- Dados medidos: deslocamento da mão próxima ~99 px, mão distante ~112 px e joelhos ~87/~80 px na coordenada da arte durante a amostragem do ciclo; estão registrados em `docs/browser-qa-v0.3.12.json`.
-- **Não foi executado o comando npm `test:e2e`**: dependências npm do Playwright não estavam disponíveis neste ambiente. A execução via Python Playwright cobre os comportamentos acima, mas não substitui integralmente aquela suíte. A abertura por duplo clique (`file://`) não pôde ser validada diretamente no ambiente; o HTML inline funcionou no mesmo Chromium.
+`tests/browser/`: suíte Playwright do projeto para regressão no navegador (quando instalada).
+
+## Limites
+
+A validação automática da estabilidade vertical detecta o erro de registro que causava o salto. Ela não substitui uma avaliação humana de qualidade artística. A segunda metade do ciclo reutiliza os desenhos anteriores, reposicionados — não se afirmou que foi feita nova animação anatômica.
+
+## Resultados desta execução
+
+- `npm run verify:art`: passou.
+- `npm run test:offline`: **16/16 passaram**.
+- `python3 scripts/check-visual-grounding.py`: passou; integridade dos oito desenhos confirmada; cabeça 4 px e pés 3 px de dispersão vertical.
+- `npm run build:offline`: TypeScript compilado; `dist/` e `JOGAR.html` produzidos.
+- Chromium + Python Playwright com o HTML autocontido inserido via `page.set_content`: todos os oito quadros, mesma coordenada vertical `Y=582` em todas as amostras, caminhar direita/esquerda, parar, reset, nenhuma requisição Web externa e nenhum erro de JavaScript.
+- Comprovantes visuais: `docs/browser-walking-v0.3.11.png` e `docs/browser-idle-v0.3.11.png`.
+- Os três atlas (fonte alinhada, public e dist) foram comparados por SHA-256 e coincidem.
+- O navegador deste ambiente **bloqueou navegação `file://` e `http://localhost` por política administrativa**. Não foi possível executar esses dois testes de navegação aqui. O conteúdo da versão autocontida foi executado e validado no mesmo Chromium.
+- Vitest/Playwright via npm não foram executados por falta das dependências npm instaladas no ambiente; foram usados Node `--test` e Python Playwright instalado.

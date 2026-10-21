@@ -8,8 +8,7 @@ const js=await readFile(root+'/dist/assets/'+jsFile,'utf8');
 const css=await readFile(root+'/public/style.css','utf8');
 const vendor=await readFile(root+'/public/vendor/phaser-runtime.js','utf8');
 const embedded={};
-const rigNames=['tail','rear_upper_arm','rear_forearm','near_upper_arm','near_forearm','rear_thigh','rear_calf','rear_foot','near_thigh','near_calf','near_foot','torso','cloth'];
-for(const name of ['bg_waterfall.jpg','stone.png','moss.png','joca-walk.png',...rigNames.map(n=>'rig/'+n+'.png')])
+for(const name of ['bg_waterfall.jpg','stone.png','moss.png','joca-walk.png'])
  embedded[name]='data:image/'+(name.endsWith('.jpg')?'jpeg':'png')+';base64,'+(await readFile(root+'/public/assets/'+name)).toString('base64');
 const escape=s=>s.replace(/<\/script/gi,'<\\/script');
 let html=await readFile(root+'/index.html','utf8');
@@ -17,4 +16,4 @@ html=html.replace('<link rel="stylesheet" href="/style.css">',`<style>${css}</st
 html=html.replace(/<script src="\/vendor\/phaser-runtime.js"><\/script><script type="module" src="\/src\/main.ts"><\/script>/,
  `<script>window.__JOCA_ASSETS__=${JSON.stringify(embedded)};</script><script>${escape(vendor)}</script><script type="module">${escape(js)}</script>`);
 await writeFile(root+'/JOGAR.html',html);
-console.log('JOCA 0.3.12: JOGAR.html independente criado.');
+console.log('JOCA 0.3.11: JOGAR.html independente criado.');

@@ -3,15 +3,13 @@ import {createHash} from 'node:crypto';
 import {resolve} from 'node:path';
 import assert from 'node:assert/strict';
 const root=resolve(import.meta.dirname,'..');
-const names=['tail','rear_upper_arm','rear_forearm','near_upper_arm','near_forearm','rear_thigh','rear_calf','rear_foot','near_thigh','near_calf','near_foot','torso','cloth'];
-const sha=b=>createHash('sha256').update(b).digest('hex');
-const original=await readFile(root+'/art-source/v0.3.3-original/joca-walk.png');
-assert.equal(original.readUInt32BE(16),1536);
-assert.equal(original.readUInt32BE(20),1024);
-for(const name of names){
- const src=await readFile(root+'/art-source/v0.3.12-rig/'+name+'.png');
- const playable=await readFile(root+'/public/assets/rig/'+name+'.png');
- assert.equal(sha(playable),sha(src),name+' rig texture unexpectedly changed');
- assert.equal(src.toString('hex',0,8),'89504e470d0a1a0a');
-}
-console.log(`JOCA v0.3.12: approved v0.3.3 source SHA256 ${sha(original).slice(0,16)}, 13 articulated parts verified`);
+const source=await readFile(root+'/art-source/v0.3.11-source/joca-walk-aligned.png');
+const shipped=await readFile(root+'/public/assets/joca-walk.png');
+const meta=JSON.parse(await readFile(root+'/art-source/v0.3.11-source/alignment.json','utf8'));
+const sha=(data)=>createHash('sha256').update(data).digest('hex');
+assert.equal(sha(shipped),sha(source),'Playable atlas must match aligned source');
+assert.equal(shipped.toString('hex',0,8),'89504e470d0a1a0a','PNG signature');
+assert.equal(shipped.readUInt32BE(16),1536,'Atlas width');
+assert.equal(shipped.readUInt32BE(20),1024,'Atlas height');
+assert.deepEqual(meta.verticalOffsetsPx,[0,0,0,0,56,58,59,60]);
+console.log(`JOCA v0.3.11: aligned PNG verified (1536×1024, 8 frames, SHA256 ${sha(shipped).slice(0,16)}…)`);
