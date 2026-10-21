@@ -1,0 +1,29 @@
+{
+  "embedded_chromium": {
+    "version": "0.4.0",
+    "frames": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "root_heights": [
+      582
+    ],
+    "pose_positions": {
+      "0": 180.5205781680534,
+      "2": 280.2173625393046,
+      "1": 374.70539289534537,
+      "3": 556.7053583248592
+    },
+    "walking_distance": 1214.5,
+    "browser_errors": [],
+    "external_requests": [],
+    "restart": 180
+  },
+  "file_url": {
+    "result": "not-verified",
+    "problem": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///mnt/data/joca-v040-work/joca-v0.4.0/JOGAR.html?test\nCall log:\n  - navigating to \"file:///mnt/data/joca-v040-work/joca-v0.4.0/JOGAR.html?test\", waiting until \"load\"\n",
+    "errors": []
+  }
+}
