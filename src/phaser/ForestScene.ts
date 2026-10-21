@@ -104,7 +104,7 @@ export class ForestScene extends Phaser.Scene {
  private setCharacter(state:Motion,frame:number):void {
   let texture:string;let width=166,height=184;
   if(state==='attack'){texture=spriteKey('attack',frame);width=287;height=197;}
-  else if(state==='jump'||state==='fall'){texture=spriteKey('jump',frame);width=150;height=184;}
+  else if(state==='jump'||state==='fall'){texture=spriteKey('jump',frame);width=130;height=184;}
   else if(state==='run'){texture=spriteKey('run',frame);width=180;height=184;}
   else texture=spriteKey('walk',state==='idle'?0:frame);
   if(this.character.texture.key!==texture)this.character.setTexture(texture);

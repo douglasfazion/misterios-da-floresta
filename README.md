@@ -1,4 +1,4 @@
-# JOCA — As Sombras da Mata v0.5.1
+# JOCA — As Sombras da Mata v0.5.0
 
 ## Abra e jogue imediatamente
 
@@ -37,10 +37,4 @@ Abra `http://localhost:4173`. `npm run build` compila o código e copia a biblio
 ## Observações
 - Mantivemos a arte da v0.3.1; os problemas artísticos das imagens não são magicamente resolvidos pela troca de motor.
 - Os testes automatizados validam regras e arquivos. A versão Canvas offline pode ser testada diretamente no navegador. A versão Phaser depende da disponibilidade do runtime externo e precisa de validação visual adicional.
-- Versão: **v0.5.1**, migração arquitetural. A versão restaurada jogável de referência é a **v0.3.1**.
-
-## v0.5.1 — escala do salto corrigida
-- Os 6 PNGs do salto foram normalizados para a mesma altura aparente do Joca, descartando apenas fragmentos desconectados de outras poses.
-- A largura de exibição do salto foi ajustada de 130 para 150 px; a altura do sprite permanece 184 px.
-- Código offline e código Phaser/TypeScript foram atualizados igualmente.
-- Cenário, física, sombra, caminhada, corrida e ataque permanecem com o mesmo comportamento.
+- Versão: **v0.5.0**, migração arquitetural. A versão restaurada jogável de referência é a **v0.3.1**.

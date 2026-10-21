@@ -130,7 +130,7 @@ export class ForestScene extends Phaser.Scene {
         }
         else if (state === 'jump' || state === 'fall') {
             texture = spriteKey('jump', frame);
-            width = 150;
+            width = 130;
             height = 184;
         }
         else if (state === 'run') {
