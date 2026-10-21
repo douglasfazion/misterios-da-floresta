@@ -1,4 +1,4 @@
-export const VERSION = '0.5.2';
+export const VERSION = '0.5.1';
 export const VIEW = { width: 1280, height: 720, worldWidth: 5600, ground: 586 };
 export const MOVEMENT = { walkSpeed: 312, runSpeed: 510, acceleration: 1600, friction: 1950, gravity: 2808, jumpVelocity: -990, attackMilliseconds: 450, attackCooldownMilliseconds: 535 };
 export const PLATFORMS = [
