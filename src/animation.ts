@@ -24,7 +24,7 @@ export class PlayerVisual {
   this.shadow.setX(player.x);
  }
  public snapshot(){
-  return {source:'v0.4.1-user-four-poses',spriteFrames:ART.frames,
+  return {source:'v0.4.0-original-four-poses',spriteFrames:ART.frames,
    visibleFrame:this.currentFrame,groundY:this.visualY,
    scale:this.sprite.scaleX};
  }

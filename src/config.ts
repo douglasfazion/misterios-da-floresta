@@ -1,5 +1,5 @@
 // Only the walking laboratory is in scope. All coordinates use game-world pixels.
-export const VERSION='0.4.1' as const;
+export const VERSION='0.4.0' as const;
 export const WORLD={width:4200,height:720,ground:582,minX:86,maxX:4100,startX:180} as const;
 export const MOVE={
  speed:210,
@@ -12,7 +12,7 @@ export const ART={
  frames:4,
  frameWidth:700,
  frameHeight:700,
- anchorX:430,
+ anchorX:380,
  footY:675,
  height:300,
  idleFrame:0,

@@ -1,4 +1,4 @@
-# Decisões e status — JOCA v0.4.1
+# Decisões e status — JOCA v0.4.0
 
 **Aprovado:** TypeScript + Phaser; desenvolvimento por iterações pequenas; entregar apenas ZIP versionado; manter identidade visual; parar até aprovação do usuário.
 

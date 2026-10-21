@@ -1,6 +1,6 @@
 # Alterações — JOCA
 
-## v0.4.1 — Reinício controlado da caminhada (2026-10-20)
+## v0.4.0 — Reinício controlado da caminhada (2026-10-20)
 
 - Caminhada articulada e spritesheet de 12 poses deixaram de ser usados no runtime.
 - Nova fonte: folha original 2×2 de Joca fornecida pelo usuário.

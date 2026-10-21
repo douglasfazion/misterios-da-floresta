@@ -7,7 +7,7 @@ test.beforeEach(async({page})=>{
 test('loads 4-frame walk, goes both directions, stops and resets',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  const start=await snapshot(page);
- expect(start.version).toBe('0.4.1');expect(start.textureReady).toBe(true);expect(start.spriteFrames).toBe(4);
+ expect(start.version).toBe('0.4.0');expect(start.textureReady).toBe(true);expect(start.spriteFrames).toBe(4);
  await page.keyboard.down('KeyD');await expect.poll(async()=> (await snapshot(page)).x).toBeGreaterThan(start.x+130);
  await page.keyboard.up('KeyD');await expect.poll(async()=> (await snapshot(page)).velocity).toBe(0);
  const stopped=await snapshot(page);await page.waitForTimeout(160);expect((await snapshot(page)).x).toBe(stopped.x);
