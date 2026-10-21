@@ -59,6 +59,6 @@ export class WalkScene extends Phaser.Scene {
   }
   this.visual.update(this.player);
   updateCamera(this.cameras.main,this.player.x,Math.min(delta/1000,.1));
-  document.querySelector('#status')!.textContent=`${this.player.moving?'Caminhando':'Parado'} · ${Math.round(Math.abs(this.player.velocity))} px/s · pose ${this.visual.currentFrame+1}/4 · spritesheet`;
+  document.querySelector('#status')!.textContent=`${this.player.moving?'Caminhando':'Parado'} · ${Math.round(Math.abs(this.player.velocity))} px/s · pose ${this.visual.currentFrame+1}/12 · spritesheet`;
  }
 }

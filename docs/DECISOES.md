@@ -1,11 +1,21 @@
-# Decisões e status — JOCA v0.4.0
+# Decisões — JOCA v0.3.13
 
-**Aprovado:** TypeScript + Phaser; desenvolvimento por iterações pequenas; entregar apenas ZIP versionado; manter identidade visual; parar até aprovação do usuário.
+## Aprovado
 
-**Aprovado para esta iteração:** reiniciar a **animação de caminhada** com a folha de quatro poses enviada, abandonando animação articulada e a folha de 12 quadros.
+- TypeScript + Phaser 3.90.0, Web em ZIP versionado.
+- Visual original humano-lupino do Joca deve ser respeitado.
+- Priorizar naturalidade da caminhada, com teste dentro do jogo.
+- Abandonar a técnica de animação articulada da v0.3.12.
+- Integrar a folha de 12 poses enviada pelo usuário.
 
-**Implementado:** poses completas (não articuladas), grade 2×2, eixo do personagem fixo, quadro dependente da distância, testes de regressão, cena e controles preservados.
+## Implementado
 
-**Aguardando:** aprovação visual do ciclo, principalmente alternância das pernas, braços, contato com o chão e ausência de tremores. Não afirmar perfeição anatômica com base somente em testes automatizados.
+- Um `Phaser.GameObjects.Sprite` para o personagem; 12 frames de corpo inteiro, sem rig.
+- Grade e pivôs fixos; registro prévio por posição da cabeça/ombro e contato dos pés.
+- Ritmo de animação guiado pelo deslocamento real do jogador.
+- Sem alteração de velocidade, aceleração, câmera, colisões ou cenário.
 
-**Recuperação:** o pacote `joca-v0.3.13-web.zip` permanece separado desta entrega e não foi apagado.
+## Pendente
+
+- Aceitação visual da caminhada real, especialmente passada das pernas e balanço dos braços. Testes automatizados não substituem essa avaliação.
+- Não alterar funcionalidades novas até que o usuário aprove a locomoção.

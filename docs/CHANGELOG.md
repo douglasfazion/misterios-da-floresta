@@ -1,11 +1,15 @@
-# Alterações — JOCA
+# Changelog — JOCA
 
-## v0.4.0 — Reinício controlado da caminhada (2026-10-20)
+## v0.3.13 — spritesheet de 12 quadros integrado (2026-10-20)
 
-- Caminhada articulada e spritesheet de 12 poses deixaram de ser usados no runtime.
-- Nova fonte: folha original 2×2 de Joca fornecida pelo usuário.
-- Extração e alinhamento sem redesenhar os quadros; atlas final 2×2, células de 700×700.
-- Reprodução direta das quatro imagens em sequência cíclica, sincronizada pela distância.
-- Eixo vertical do sprite fixo, linha de apoio Y=675 em todas as imagens.
-- Mantidos controles, câmera, cenário e arquitetura TypeScript/Phaser.
-- Testes de movimentação e carregamento atualizados; ZIP anterior não sobrescrito.
+- Abandonada a animação articulada da v0.3.12, conforme decisão do usuário.
+- Integrado o spritesheet de 12 poses fornecido pelo usuário, mantendo a identidade humano-lupina de Joca.
+- Preparação reprodutível do atlas: **4×3 células 448×420**, com suporte dos pés na mesma linha e posição de cabeça uniforme (variação registrada de 5 px dentro do atlas).
+- Animação de corpo inteiro por textura, sem sobreposição, sem peça rotacionada e sem retiming dos controles.
+- Mantidos `MOVE.speed=210`, `MOVE.stride=168`, câmera, cenário, limites e comandos.
+- Testes de lógica para movimentação, 12 poses, ciclo e limites; inspeção funcional real no Chromium.
+- Backup da v0.3.12 separado em `history/`.
+
+## v0.3.12 — animação articulada (revertida nesta versão)
+
+- Versão de 13 recortes da arte v0.3.3. Não era a apresentação desejada e foi substituída para locomoção.

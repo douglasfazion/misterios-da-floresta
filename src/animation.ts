@@ -1,7 +1,7 @@
 import {ART,WORLD} from './config';
 import {frameForPhase} from './gait';
 import type {PlayerState} from './player';
-/** Four complete poses sliced from the approved user image; no articulated limbs. */
+/** Full-body 2D spritesheet; no articulation, scaling per-frame or crossfades. */
 export class PlayerVisual {
  private sprite:any;
  private shadow:any;
@@ -10,7 +10,7 @@ export class PlayerVisual {
  public seamOpacity=0;
  constructor(scene:any){
   this.shadow=scene.add.ellipse(0,WORLD.ground+3,68,10,0x000000,.38);
-  const scale=ART.height/(ART.footY-65);
+  const scale=ART.height/(ART.footY-38);
   this.sprite=scene.add.sprite(0,WORLD.ground,'joca',ART.idleFrame)
    .setOrigin(ART.anchorX/ART.frameWidth,ART.footY/ART.frameHeight)
    .setScale(scale);
@@ -24,7 +24,7 @@ export class PlayerVisual {
   this.shadow.setX(player.x);
  }
  public snapshot(){
-  return {source:'v0.4.0-original-four-poses',spriteFrames:ART.frames,
+  return {source:'v0.3.13-12frame-spritesheet',spriteFrames:ART.frames,
    visibleFrame:this.currentFrame,groundY:this.visualY,
    scale:this.sprite.scaleX};
  }

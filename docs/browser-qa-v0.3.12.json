@@ -1,0 +1,26 @@
+{
+  "version": "0.3.12",
+  "rigPieces": 13,
+  "rightTravel": 858.0,
+  "nearArmXRange": 99.3,
+  "rearArmXRange": 112.2,
+  "nearKneeXRange": 87.1,
+  "rearKneeXRange": 80.0,
+  "groundY": 582,
+  "errors": [],
+  "externalRequests": [],
+  "checks": [
+    "load",
+    "13 cutouts",
+    "both arms",
+    "both knees",
+    "alternate feet",
+    "torso fixed",
+    "walk right",
+    "walk left",
+    "stop",
+    "reset",
+    "blur",
+    "offline"
+  ]
+}

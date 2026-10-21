@@ -1,27 +1,14 @@
-# QA — JOCA v0.4.0
+# QA — JOCA v0.3.13
 
-Critérios técnicos:
+## Testes realizados
 
-1. A folha preparada deve conter exatamente quatro poses, mantendo a ordem 2×2 da fonte.
-2. Todos os quadros devem tocar a mesma linha visual Y=675 na célula.
-3. O jogo deve avançar os quadros conforme distância, repetir 3→0, parar em frame 0 e não alterar a posição Y do sprite.
-4. Esquerda/direita, desaceleração, reversão, limites do mundo, reinício e câmera continuam funcionando.
-5. `JOGAR.html` deve funcionar sem baixar imagens ou Phaser pela internet.
+- `npm run verify:art`: passou; confere a grade 4×3, 12 poses, linha de suporte e variação aceitável de registro.
+- `npm run test:offline`: **11/11 passaram**; locomover à esquerda/direita, frenagem, limites, transição de direção, determinismo, 12 poses, wrap 11→0 e sincronização por distância.
+- `npm run build:offline`: compilação TypeScript e geração de `dist/` e `JOGAR.html` passaram.
+- Chromium headless com Python Playwright, executando `JOGAR.html` via conteúdo autocontido: spritesheet carregada, 12/12 frames observados, movimento nos dois sentidos, parada, inversão, reinício, posição vertical de sprite constante (582 px), ausência de erros JS e HTTP externo. Capturas `qa-frame6.png` e `qa-v0.3.13-browser.png`.
 
-Critérios artísticos para avaliação humana:
+## Limitações do teste
 
-- Alternância legível dos passos de Joca.
-- Braços e mãos com leitura natural, sem aparentar congelamento ou vibração excessiva.
-- Sem pulinhos verticais ou pés aparentemente deslizando no terreno.
-- Fidelidade aos desenhos enviados (cabelo, rosto, tecidos, armaduras, orelhas e cauda).
-
-Testes automáticos não certificam a qualidade estética. Executar e registrar somente os testes de fato realizados.
-
-## Execução de testes (2026-10-20)
-
-- `npm run verify:art`: **passou** — imagem original 1227×1282, atlas 1400×1400, quatro poses, Y=675 para todos os pés.
-- `npm run test:offline`: **12/12 passaram** — movimento, física, limites, parada, ciclo e regressão.
-- `npm run build:offline`: **passou** — TypeScript compilado e `dist/`, `JOGAR.html` gerados.
-- Chromium headless com HTML autocontido: **passou** — carregamento, quatro quadros distintos, posição vertical Y=582, esquerda/direita, parada, reinício, câmera, nenhum erro JavaScript ou requisição externa.
-- A tentativa de navegação direta `file://` foi bloqueada pelas permissões do ambiente (`ERR_BLOCKED_BY_ADMINISTRATOR`), portanto **não foi validada aqui**; o HTML autocontido foi carregado pelo navegador via conteúdo injetado. Ver `docs/browser-qa.json`.
-- **Pendente:** avaliação artística do usuário jogando. Nem o alinhamento nem os testes de lógica garantem uma animação anatomicamente natural.
+- Não foi executada integralmente a suíte `npm test` / `npm run test:e2e`: dependências npm não estavam instaladas neste runtime. Executamos a suíte offline e o fluxo Python Playwright.
+- O comando de abertura por duplo clique no Windows (protocolo `file://`) não foi executado neste runtime.
+- Avaliação humana da naturalidade da passada e das mãos continua necessária.

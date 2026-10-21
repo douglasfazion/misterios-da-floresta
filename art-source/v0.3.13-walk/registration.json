@@ -1,0 +1,253 @@
+{
+  "input": "walk-input.png",
+  "output": "joca-walk.png",
+  "cell": [
+    448,
+    420
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "source_xy": [
+        0,
+        0
+      ],
+      "source_bounds": [
+        21,
+        9,
+        361,
+        361
+      ],
+      "offset_xy": [
+        31,
+        29
+      ],
+      "head_feature_x": 260.0,
+      "contact_bottom_y": 390,
+      "head_top_y": 38
+    },
+    {
+      "frame": 1,
+      "source_xy": [
+        362,
+        0
+      ],
+      "source_bounds": [
+        0,
+        10,
+        354,
+        361
+      ],
+      "offset_xy": [
+        34,
+        29
+      ],
+      "head_feature_x": 257.0,
+      "contact_bottom_y": 390,
+      "head_top_y": 39
+    },
+    {
+      "frame": 2,
+      "source_xy": [
+        724,
+        0
+      ],
+      "source_bounds": [
+        17,
+        9,
+        336,
+        360
+      ],
+      "offset_xy": [
+        48,
+        30
+      ],
+      "head_feature_x": 243.0,
+      "contact_bottom_y": 390,
+      "head_top_y": 39
+    },
+    {
+      "frame": 3,
+      "source_xy": [
+        1086,
+        0
+      ],
+      "source_bounds": [
+        8,
+        9,
+        343,
+        360
+      ],
+      "offset_xy": [
+        56,
+        30
+      ],
+      "head_feature_x": 235.0,
+      "contact_bottom_y": 390,
+      "head_top_y": 39
+    },
+    {
+      "frame": 4,
+      "source_xy": [
+        0,
+        362
+      ],
+      "source_bounds": [
+        18,
+        8,
+        361,
+        361
+      ],
+      "offset_xy": [
+        42,
+        29
+      ],
+      "head_feature_x": 249.0,
+      "contact_bottom_y": 390,
+      "head_top_y": 37
+    },
+    {
+      "frame": 5,
+      "source_xy": [
+        362,
+        362
+      ],
+      "source_bounds": [
+        0,
+        10,
+        361,
+        361
+      ],
+      "offset_xy": [
+        40,
+        29
+      ],
+      "head_feature_x": 251.0,
+      "contact_bottom_y": 390,
+      "head_top_y": 39
+    },
+    {
+      "frame": 6,
+      "source_xy": [
+        724,
+        362
+      ],
+      "source_bounds": [
+        0,
+        8,
+        353,
+        361
+      ],
+      "offset_xy": [
+        57,
+        29
+      ],
+      "head_feature_x": 234.0,
+      "contact_bottom_y": 390,
+      "head_top_y": 37
+    },
+    {
+      "frame": 7,
+      "source_xy": [
+        1086,
+        362
+      ],
+      "source_bounds": [
+        6,
+        9,
+        355,
+        361
+      ],
+      "offset_xy": [
+        59,
+        29
+      ],
+      "head_feature_x": 232.0,
+      "contact_bottom_y": 390,
+      "head_top_y": 38
+    },
+    {
+      "frame": 8,
+      "source_xy": [
+        0,
+        724
+      ],
+      "source_bounds": [
+        24,
+        0,
+        361,
+        349
+      ],
+      "offset_xy": [
+        28,
+        41
+      ],
+      "head_feature_x": 263.0,
+      "contact_bottom_y": 390,
+      "head_top_y": 41
+    },
+    {
+      "frame": 9,
+      "source_xy": [
+        362,
+        724
+      ],
+      "source_bounds": [
+        0,
+        0,
+        361,
+        351
+      ],
+      "offset_xy": [
+        31,
+        39
+      ],
+      "head_feature_x": 260.0,
+      "contact_bottom_y": 390,
+      "head_top_y": 39
+    },
+    {
+      "frame": 10,
+      "source_xy": [
+        724,
+        724
+      ],
+      "source_bounds": [
+        0,
+        0,
+        361,
+        350
+      ],
+      "offset_xy": [
+        30,
+        40
+      ],
+      "head_feature_x": 261.0,
+      "contact_bottom_y": 390,
+      "head_top_y": 40
+    },
+    {
+      "frame": 11,
+      "source_xy": [
+        1086,
+        724
+      ],
+      "source_bounds": [
+        0,
+        0,
+        360,
+        348
+      ],
+      "offset_xy": [
+        52,
+        42
+      ],
+      "head_feature_x": 239.0,
+      "contact_bottom_y": 390,
+      "head_top_y": 42
+    }
+  ],
+  "contactY": 390,
+  "pivotX": 291,
+  "framesCount": 12
+}

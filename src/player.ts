@@ -4,7 +4,7 @@ export interface PlayerState {
  x:number;velocity:number;facing:-1|1;phase:number;distance:number;moving:boolean;
 }
 export function createPlayer():PlayerState {
- return {x:WORLD.startX,velocity:0,facing:1,phase:0,distance:0,moving:false};
+ return {x:WORLD.startX,velocity:0,facing:1,phase:1/8,distance:0,moving:false};
 }
 export function stepPlayer(state:PlayerState,direction:Direction,dt:number):PlayerState {
  if(!Number.isFinite(dt)||dt<=0)return state;
