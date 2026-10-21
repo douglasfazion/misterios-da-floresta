@@ -8,9 +8,9 @@ import numpy as np
 from PIL import Image
 
 ROOT=Path(__file__).resolve().parents[1]
-SOURCE=ROOT/'art-source/v0.4.4-eight-frame/source-8poses.png'
+SOURCE=ROOT/'art-source/v0.4.3-eight-frame/source-8poses.png'
 DEST=ROOT/'public/assets/joca-walk.png'
-MANIFEST=ROOT/'art-source/v0.4.4-eight-frame/registration.json'
+MANIFEST=ROOT/'art-source/v0.4.3-eight-frame/registration.json'
 CELL_W=CELL_H=560
 GROUND_Y=530
 HEAD_CENTER_X=360

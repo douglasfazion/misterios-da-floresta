@@ -1,14 +1,27 @@
-# QA — JOCA v0.4.4
+# QA — JOCA v0.4.0
 
-## Resultados observados
+Critérios técnicos:
 
-- `npm run verify:art`: passou (oito quadros, atlas 4×2, pés normalizados em Y=530).
-- `npm run test:offline`: passou (12/12 testes de movimento, entrada, fase da animação e limite de mundo).
-- `npm run build:offline`: passou (HTML standalone e `dist/`).
-- Chromium via carregamento do HTML autocontido: passou com os 8 quadros, movimento em dois sentidos, parada, reinício, interface atualizada para X/8 e nenhum erro JavaScript nem requisição externa.
-- Acesso `file://` diretamente a partir do ambiente de execução: **bloqueado por política do ambiente (`ERR_BLOCKED_BY_ADMINISTRATOR`)**; não é evidência de falha do jogo, mas não podemos declarar esse caminho como testado.
+1. A folha preparada deve conter exatamente quatro poses, mantendo a ordem 2×2 da fonte.
+2. Todos os quadros devem tocar a mesma linha visual Y=675 na célula.
+3. O jogo deve avançar os quadros conforme distância, repetir 3→0, parar em frame 0 e não alterar a posição Y do sprite.
+4. Esquerda/direita, desaceleração, reversão, limites do mundo, reinício e câmera continuam funcionando.
+5. `JOGAR.html` deve funcionar sem baixar imagens ou Phaser pela internet.
 
-## Pendente
+Critérios artísticos para avaliação humana:
 
-- Avaliação artística do usuário dentro do jogo: naturalidade da passada, movimento dos braços e transição do quadro 8 para o 1.
-- A suíte automatizada `npm run test:e2e` completa não foi executada aqui; a checagem direta no Chromium foi executada separadamente.
+- Alternância legível dos passos de Joca.
+- Braços e mãos com leitura natural, sem aparentar congelamento ou vibração excessiva.
+- Sem pulinhos verticais ou pés aparentemente deslizando no terreno.
+- Fidelidade aos desenhos enviados (cabelo, rosto, tecidos, armaduras, orelhas e cauda).
+
+Testes automáticos não certificam a qualidade estética. Executar e registrar somente os testes de fato realizados.
+
+## Execução de testes (2026-10-20)
+
+- `npm run verify:art`: **passou** — imagem original 1227×1282, atlas 1400×1400, quatro poses, Y=675 para todos os pés.
+- `npm run test:offline`: **12/12 passaram** — movimento, física, limites, parada, ciclo e regressão.
+- `npm run build:offline`: **passou** — TypeScript compilado e `dist/`, `JOGAR.html` gerados.
+- Chromium headless com HTML autocontido: **passou** — carregamento, quatro quadros distintos, posição vertical Y=582, esquerda/direita, parada, reinício, câmera, nenhum erro JavaScript ou requisição externa.
+- A tentativa de navegação direta `file://` foi bloqueada pelas permissões do ambiente (`ERR_BLOCKED_BY_ADMINISTRATOR`), portanto **não foi validada aqui**; o HTML autocontido foi carregado pelo navegador via conteúdo injetado. Ver `docs/browser-qa.json`.
+- **Pendente:** avaliação artística do usuário jogando. Nem o alinhamento nem os testes de lógica garantem uma animação anatomicamente natural.

@@ -1,5 +1,5 @@
 import Phaser from './phaser-runtime';
-import {VERSION,MOVE,ART} from './config';
+import {VERSION,MOVE} from './config';
 import {createPlayer,stepPlayer,stopPlayer} from './player';
 import {InputController} from './input';
 import {loadAssets} from './assets';
@@ -59,6 +59,6 @@ export class WalkScene extends Phaser.Scene {
   }
   this.visual.update(this.player);
   updateCamera(this.cameras.main,this.player.x,Math.min(delta/1000,.1));
-  document.querySelector('#status')!.textContent=`${this.player.moving?'Caminhando':'Parado'} · ${Math.round(Math.abs(this.player.velocity))} px/s · pose ${this.visual.currentFrame+1}/${ART.frames} · spritesheet`;
+  document.querySelector('#status')!.textContent=`${this.player.moving?'Caminhando':'Parado'} · ${Math.round(Math.abs(this.player.velocity))} px/s · pose ${this.visual.currentFrame+1}/4 · spritesheet`;
  }
 }

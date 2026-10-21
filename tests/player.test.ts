@@ -2,9 +2,9 @@ import {describe,it,expect} from 'vitest';
 import {ART,MOVE,WORLD,VERSION} from '../src/config';
 import {createPlayer,stepPlayer,stopPlayer} from '../src/player';
 import {frameForPhase} from '../src/gait';
-describe('JOCA v0.4.4 — eight-pose walk',()=>{
+describe('JOCA v0.4.3 — eight-pose walk',()=>{
  it('is the approved eight-frame source layout',()=>{
-  expect(VERSION).toBe('0.4.4');expect(ART).toMatchObject({frames:8,frameWidth:560,frameHeight:560,footY:530,anchorX:360});
+  expect(VERSION).toBe('0.4.3');expect(ART).toMatchObject({frames:8,frameWidth:560,frameHeight:560,footY:530,anchorX:360});
  });
  it('keeps core controls and movement rules',()=>{
   const start=createPlayer();let right=start;

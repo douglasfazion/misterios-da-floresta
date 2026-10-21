@@ -1,21 +1,13 @@
 # Alterações — JOCA
 
-## v0.4.4 — Troca do spritesheet de 8 frames (2026-10-20)
+## v0.4.3 — Nova caminhada de 8 frames (2026-10-20)
 
-- Substituído o atlas da caminhada v0.4.3 pelos oito desenhos do arquivo recebido "Spritesheet do Lobisomem Tribal em Corrida.png".
-- Arquivo original guardado sem alteração em `art-source/v0.4.4-eight-frame/source-8poses.png`.
-- Atlas reconstruído em 4×2 células de 560×560, recortes transladados sem redimensionar nem redesenhar.
-- Base dos pés de todos os quadros colocada em Y=530 dentro de cada célula; pivô único mantido.
-- Playback continua baseado na distância percorrida e usa sequência 0→1→2→3→4→5→6→7→0.
-- Corrigida indicação na interface de pose X/4 para pose X/8 (dinâmica conforme ART.frames).
-- Cenário, velocidade, controles, câmera e versão do Phaser preservados.
-- Verificação da arte e 12 testes offline passaram; compilação e validação no Chromium passaram.
-- Pendente: avaliação artística do usuário, sobretudo alternância dos pés e fechamento do loop.
+- A base da caminhada passou a usar o novo spritesheet 4×2 de oito poses enviado por último pelo usuário.
+- Extração e alinhamento sem redesenhar os quadros; atlas final 4×2, células de 560×560.
+- Reprodução direta das oito imagens em sequência cíclica, sincronizada pela distância.
+- Eixo vertical do sprite fixo, linha de apoio Y=530 em todas as imagens.
+- Mantidos controles, câmera, cenário e arquitetura TypeScript/Phaser.
 
-## v0.4.3 — Spritesheet de oito poses anterior
+## v0.4.2 — Caminhada de 8 frames anterior
 
-- Primeira comparação deste novo tipo de folha com oito quadros.
-
-## v0.4.2 — Oito poses em quatro colunas e duas linhas
-
-- Versão preservada para comparação na conversa.
+- Base de 8 poses anterior, agora preservada como referência recuperável.

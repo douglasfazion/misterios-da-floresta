@@ -11,4 +11,4 @@ const server=http.createServer(async(req,res)=>{try{
  const body=await readFile(target);res.writeHead(200,{'Content-Type':types[extname(target)]||'application/octet-stream','Cache-Control':'no-store'});res.end(body);
  }catch{res.writeHead(404);res.end('Arquivo nao encontrado');}});
 server.on('error',e=>{console.error('Nao foi possivel iniciar o servidor:',e.message);process.exitCode=1;});
-server.listen(8000,'127.0.0.1',()=>console.log('JOCA v0.4.4: abra http://127.0.0.1:8000\nMantenha esta janela aberta. Ctrl+C encerra.'));
+server.listen(8000,'127.0.0.1',()=>console.log('JOCA v0.3.7: abra http://127.0.0.1:8000\nMantenha esta janela aberta. Ctrl+C encerra.'));
