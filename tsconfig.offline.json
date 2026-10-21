@@ -1,0 +1,1 @@
+{"extends":"./tsconfig.json","compilerOptions":{"target":"ES2022","module":"AMD","moduleResolution":"Node","noEmit":false,"outFile":"dist/app.js","sourceMap":false},"include":["src/**/*.ts"]}
