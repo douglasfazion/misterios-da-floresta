@@ -22,7 +22,7 @@ function setup(){
 test('replay offline restaura caminhada, pulo, ataque, sprites e câmera',()=>{
  const t=setup();
  assert.equal(t.scope.__JOCA_READY__,true);
- assert.equal(t.scope.__JOCA_DEBUG__().loaded,42);
+ assert.equal(t.scope.__JOCA_DEBUG__().loaded,40);
  const begin=t.scope.__JOCA_DEBUG__();
  t.key('KeyD',true);t.step(35);
  const walking=t.scope.__JOCA_DEBUG__();

@@ -6,7 +6,7 @@ const keys=Object.create(null),pressed=Object.create(null);
 addEventListener('keydown',e=>{if(['Space','ArrowUp','ArrowLeft','ArrowRight','KeyW','KeyA','KeyD','ShiftLeft','ShiftRight','KeyR','KeyJ'].includes(e.code))e.preventDefault();if(!keys[e.code])pressed[e.code]=true;keys[e.code]=true});
 addEventListener('keyup',e=>{keys[e.code]=false});
 addEventListener('blur',()=>{for(const k of Object.keys(keys))keys[k]=false});
-const files=[...Array.from({length:8},(_,i)=>'joca_walk_'+String(i).padStart(2,'0')),...Array.from({length:8},(_,i)=>'joca_run_'+String(i).padStart(2,'0')),...Array.from({length:6},(_,i)=>'joca_jump_'+String(i).padStart(2,'0')),'stone','moss','ledge','ruin','bg_forest','bg_ruins','bg_waterfall','distant_forest',...Array.from({length:12},(_,i)=>'joca_strike_'+String(i).padStart(2,'0'))];
+const files=[...Array.from({length:8},(_,i)=>'joca_walk_'+String(i).padStart(2,'0')),...Array.from({length:6},(_,i)=>'joca_run_'+String(i).padStart(2,'0')),...Array.from({length:6},(_,i)=>'joca_jump_'+String(i).padStart(2,'0')),'stone','moss','ledge','ruin','bg_forest','bg_ruins','bg_waterfall','distant_forest',...Array.from({length:12},(_,i)=>'joca_strike_'+String(i).padStart(2,'0'))];
 const asset={};let loaded=0,failed=0;
 for(const n of files){const im=new Image();asset[n]=im;im.onload=()=>loaded++;im.onerror=()=>{failed++;console.warn('Não foi possível carregar',n)};im.src='assets/'+n+(n.startsWith('bg_')||n==='distant_forest'?'.jpg':'.png')}
 function image(name,x,y,w,h,flip=false,alpha=1){const im=asset[name];if(!im||!im.complete||!im.naturalWidth)return false;g.save();g.globalAlpha=alpha;if(flip){g.translate(x+w,0);g.scale(-1,1);g.drawImage(im,0,y,w,h)}else g.drawImage(im,x,y,w,h);g.restore();return true}
@@ -68,7 +68,7 @@ function drawJoca(){
    const j=p.vy<-11?1:p.vy<-4?2:p.vy<5?3:p.vy<12?4:5;
    n='joca_jump_'+String(j).padStart(2,'0');
  }else if(Math.abs(p.vx)>1.2){
-   if(running){state='CORRENDO';kind='run';n='joca_run_'+String(Math.floor(p.runPhase)%8).padStart(2,'0');}
+   if(running){state='CORRENDO';kind='run';n='joca_run_'+String(Math.floor(p.runPhase)%6).padStart(2,'0');}
    else {state='ANDANDO';kind='walk';const walkOrder=[0,4,5,6,7,3,2,1];n='joca_walk_'+String(walkOrder[Math.floor(p.walkPhase)%8]).padStart(2,'0');}
  }
  const feet=p.y+p.h,groundY=groundUnderJoca(),cx=p.x+p.w/2;
@@ -79,7 +79,7 @@ function drawJoca(){
  else if(kind==='attack'){h=197;w=287;x=cx-(190/510)*w;y=feet-h+9;}
  const ok=image(n,x,y,w,h,p.face<0);if(!ok)placeholder(x,y,w,h);return state;
 }
-function hud(state){g.fillStyle='#04090cdd';g.fillRect(18,14,395,108);g.strokeStyle='#a78c69';g.lineWidth=2;g.strokeRect(18,14,395,108);g.fillStyle='#f1d1aa';g.font='bold 20px Georgia';g.fillText('JOCA  ·  MOVIMENTO E ATAQUE · v0.5.2',33,42);g.font='15px Georgia';g.fillStyle='#c9d7d4';g.fillText('Estado: '+state+'    |    Velocidade: '+Math.round(Math.abs(p.vx)*10)/10,33,69);g.fillText('Sprites: '+loaded+'/'+files.length+' carregados'+(failed?' · '+failed+' falharam':''),33,94);g.fillStyle='#04090cdd';g.fillRect(948,16,305,78);g.strokeStyle='#a78c69';g.strokeRect(948,16,305,78);g.fillStyle='#9cb0ab';for(let i=0;i<5;i++)g.fillRect(960+i*55,49,51,12);g.fillStyle='#f2b071';g.beginPath();g.arc(960+275*p.x/world,55,6,0,Math.PI*2);g.fill();g.fillStyle='#eed6b5';g.font='14px Georgia';g.fillText('MATA AMALDIÇOADA · SETOR I',959,37);if(showHelp>0){g.fillStyle='#03080bd6';g.fillRect(244,620,792,42);g.fillStyle='#efd6ad';g.font='17px Georgia';g.textAlign='center';g.fillText('v0.5.2: nova caminhada, nova corrida e ataque de garras · J para atacar.',640,647);g.textAlign='left'}}
+function hud(state){g.fillStyle='#04090cdd';g.fillRect(18,14,395,108);g.strokeStyle='#a78c69';g.lineWidth=2;g.strokeRect(18,14,395,108);g.fillStyle='#f1d1aa';g.font='bold 20px Georgia';g.fillText('JOCA  ·  MOVIMENTO E ATAQUE · v0.5.3',33,42);g.font='15px Georgia';g.fillStyle='#c9d7d4';g.fillText('Estado: '+state+'    |    Velocidade: '+Math.round(Math.abs(p.vx)*10)/10,33,69);g.fillText('Sprites: '+loaded+'/'+files.length+' carregados'+(failed?' · '+failed+' falharam':''),33,94);g.fillStyle='#04090cdd';g.fillRect(948,16,305,78);g.strokeStyle='#a78c69';g.strokeRect(948,16,305,78);g.fillStyle='#9cb0ab';for(let i=0;i<5;i++)g.fillRect(960+i*55,49,51,12);g.fillStyle='#f2b071';g.beginPath();g.arc(960+275*p.x/world,55,6,0,Math.PI*2);g.fill();g.fillStyle='#eed6b5';g.font='14px Georgia';g.fillText('MATA AMALDIÇOADA · SETOR I',959,37);if(showHelp>0){g.fillStyle='#03080bd6';g.fillRect(244,620,792,42);g.fillStyle='#efd6ad';g.font='17px Georgia';g.textAlign='center';g.fillText('v0.5.3: nova caminhada, nova corrida e ataque de garras · J para atacar.',640,647);g.textAlign='left'}}
 function draw(){g.clearRect(0,0,VW,VH);paintedBackground();g.save();g.translate(-Math.round(cam),0);for(const t of plats)groundBlock(t);torches();for(const d of particles){g.fillStyle='#bdad9688';g.fillRect(d.x,d.y,d.size,d.size)}const state=drawJoca();g.restore();hud(state)}
 let last=0,acc=0;function loop(t){const delta=Math.min(50,t-last||16.667);last=t;acc+=delta;let count=0;while(acc>=16.667&&count++<4){simulate(1);acc-=16.667}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
 
