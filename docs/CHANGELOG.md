@@ -1,12 +1,13 @@
 # Alterações — JOCA
 
-## v0.4.6 — Correção de ordem da caminhada (2026-10-20)
+## v0.4.5 — Caminhada com as sprites mais recentes (2026-10-20)
 
-- Mantido o spritesheet de 8 poses da v0.4.5.
-- Corrigida a ordem de reprodução para reduzir o artefato visual em que o pé da frente parecia aparecer atrás.
-- Nova sequência: 0 → 4 → 1 → 5 → 2 → 6 → 3 → 7 → 0.
+- A base da caminhada passou a usar o spritesheet 4×2 de oito poses enviado nesta mensagem.
+- Extração e alinhamento sem redesenhar os quadros; atlas final 4×2, células de 560×560.
+- Reprodução direta das oito imagens em sequência cíclica, sincronizada pela distância.
+- Eixo vertical do sprite fixo, linha de apoio Y=530 em todas as imagens.
 - Mantidos controles, câmera, cenário e arquitetura TypeScript/Phaser.
 
-## v0.4.5 — Caminhada com as sprites mais recentes
+## v0.4.4 — Novo spritesheet de 8 frames
 
-- Base anterior preservada como referência recuperável.
+- Base de 8 poses anterior, preservada como referência recuperável.

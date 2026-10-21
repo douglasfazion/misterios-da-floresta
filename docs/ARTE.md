@@ -1,6 +1,6 @@
-# Arte e animação — JOCA v0.4.6
+# Arte e animação — JOCA v0.4.5
 
-- Fonte visual: `art-source/v0.4.6-eight-frame/source-8poses.png`.
+- Fonte visual: `art-source/v0.4.5-eight-frame/source-8poses.png`.
 - Atlas jogável: `public/assets/joca-walk.png`.
 - Oito poses organizadas em 4 colunas × 2 linhas.
 - Cada célula do atlas mede 560 × 560 px.

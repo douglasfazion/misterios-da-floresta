@@ -16,4 +16,4 @@ html=html.replace('<link rel="stylesheet" href="/style.css">',`<style>${css}</st
 html=html.replace(/<script src="\/vendor\/phaser-runtime.js"><\/script><script type="module" src="\/src\/main.ts"><\/script>/,
  `<script>window.__JOCA_ASSETS__=${JSON.stringify(embedded)};</script><script>${escape(vendor)}</script><script type="module">${escape(js)}</script>`);
 await writeFile(root+'/JOGAR.html',html);
-console.log('JOCA 0.4.6 standalone HTML generated.');
+console.log('JOCA 0.4.5 standalone HTML generated.');
