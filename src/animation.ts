@@ -1,7 +1,7 @@
 import {ART,WORLD} from './config';
 import {frameForPhase} from './gait';
 import type {PlayerState} from './player';
-/** Eight complete poses sliced from the approved user image; no articulated limbs. */
+/** Four complete poses sliced from the approved user image; no articulated limbs. */
 export class PlayerVisual {
  private sprite:any;
  private shadow:any;
@@ -24,7 +24,7 @@ export class PlayerVisual {
   this.shadow.setX(player.x);
  }
  public snapshot(){
-  return {source:'v0.4.2-user-eight-poses',spriteFrames:ART.frames,
+  return {source:'v0.4.1-user-four-poses',spriteFrames:ART.frames,
    visibleFrame:this.currentFrame,groundY:this.visualY,
    scale:this.sprite.scaleX};
  }

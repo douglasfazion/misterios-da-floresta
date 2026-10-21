@@ -29,4 +29,4 @@ const standalone=source.replace('<link rel="stylesheet" href="/style.css">',`<st
  `<script>window.__JOCA_ASSETS__=${JSON.stringify(embedded)};</script>`+
  `<script>${embed(vendor)}</script>`+`<script>${embed(loader)}</script>`+`<script>${embed(app)}</script>`);
 await writeFile(root+'/JOGAR.html',standalone);
-console.log('JOCA v0.4.2 offline build: dist/ and standalone JOGAR.html generated');
+console.log('JOCA v0.4.0 offline build: dist/ and standalone JOGAR.html generated');

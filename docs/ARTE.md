@@ -1,8 +1,8 @@
-# Arte e animação — JOCA v0.4.2
+# Arte — caminhada de quatro poses
 
-- Fonte visual: `art-source/v0.4.2-eight-frame/source-8poses.png`.
-- Atlas jogável: `public/assets/joca-walk.png`.
-- Oito poses organizadas em 4 colunas × 2 linhas.
-- Cada célula do atlas mede 560 × 560 px.
-- A preparação só recorta e reposiciona os desenhos para alinhar cabeça/tronco e a linha de apoio dos pés.
-- Não houve rigging, interpolação ou redesenho dos quadros.
+- Fonte entregue pelo usuário: `art-source/v0.4.1-four-frame/source-4poses.png`, 1227 × 1282 px RGBA, em dois quadrantes por linha.
+- Preparação em `scripts/prepare-walk.py`: recorte dos quadrantes, retirada apenas de **espaços transparentes**, deslocamento dos desenhos sobre células idênticas; pixels e poses da arte original mantidos.
+- Atlas em uso: `public/assets/joca-walk.png`, 1400 × 1400 px, 2 colunas × 2 linhas, células 700 × 700.
+- Linha de apoio visual: Y=675 em todas as células. Variação mínima da altura da cabeça é normal na arte de origem.
+- Exibição: frames 0,1,2,3; sem fade, sem novos desenhos, sem partículas, sem rigging.
+- `registration.json` registra deslocamentos e limites por quadro.

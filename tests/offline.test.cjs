@@ -4,18 +4,18 @@ const {createPlayer,stepPlayer,stopPlayer}=require('../.test-build/player.js');
 const {MOVE,WORLD,ART,VERSION}=require('../.test-build/config.js');
 const {frameForPhase}=require('../.test-build/gait.js');
 function advance(start,dir,seconds){let s=start;for(let i=0;i<Math.round(seconds/MOVE.fixedStep);i++)s=stepPlayer(s,dir,MOVE.fixedStep);return s;}
-test('new base is versioned as JOCA v0.4.2 and uses eight full sprites',()=>{
- assert.equal(VERSION,'0.4.2');assert.equal(ART.frames,8);assert.equal(ART.frameWidth,560);assert.equal(ART.frameHeight,560);
- assert.equal(ART.anchorX,320);assert.equal(ART.footY,530);
+test('new base is versioned as JOCA v0.4.1 and uses four unarticulated sprites',()=>{
+ assert.equal(VERSION,'0.4.1');assert.equal(ART.frames,4);assert.equal(ART.frameWidth,700);assert.equal(ART.frameHeight,700);
+ assert.equal(ART.anchorX,430);assert.equal(ART.footY,675);
 });
 test('starts on frame 0 at the previous spawn location',()=>{
  assert.equal(WORLD.startX,180);assert.equal(createPlayer().phase,0);assert.equal(frameForPhase(0,false),0);
 });
-test('all eight poses appear in source order',()=>{
- for(let i=0;i<8;i++)assert.equal(frameForPhase((i+.5)/8,true),i);
+test('all four poses appear in source order',()=>{
+ for(let i=0;i<4;i++)assert.equal(frameForPhase((i+.5)/4,true),i);
 });
-test('eighth pose returns to first without adding a repeated seam frame',()=>{
- assert.equal(frameForPhase(1-1e-9,true),7);assert.equal(frameForPhase(1,true),0);
+test('fourth pose returns to first without adding a repeated seam frame',()=>{
+ assert.equal(frameForPhase(1-1e-9,true),3);assert.equal(frameForPhase(1,true),0);
  assert.equal(frameForPhase(2,true),0);
 });
 test('idle never plays the walk',()=>{
