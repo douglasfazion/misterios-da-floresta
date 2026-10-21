@@ -8,12 +8,12 @@ import numpy as np
 from PIL import Image
 
 ROOT=Path(__file__).resolve().parents[1]
-SOURCE=ROOT/'art-source/v0.4.3-eight-frame/source-8poses.png'
+SOURCE=ROOT/'art-source/v0.4.2-eight-frame/source-8poses.png'
 DEST=ROOT/'public/assets/joca-walk.png'
-MANIFEST=ROOT/'art-source/v0.4.3-eight-frame/registration.json'
+MANIFEST=ROOT/'art-source/v0.4.2-eight-frame/registration.json'
 CELL_W=CELL_H=560
 GROUND_Y=530
-HEAD_CENTER_X=360
+HEAD_CENTER_X=320
 COLS=4
 ROWS=2
 
@@ -23,23 +23,30 @@ cell_w=w//COLS
 cell_h=h//ROWS
 cells=[]
 for i in range(COLS*ROWS):
-    c=i%COLS; r=i//COLS
-    x0=c*cell_w; x1=(c+1)*cell_w if c<COLS-1 else w
-    y0=r*cell_h; y1=(r+1)*cell_h if r<ROWS-1 else h
+    c=i%COLS
+    r=i//COLS
+    x0=c*cell_w
+    x1=(c+1)*cell_w if c<COLS-1 else w
+    y0=r*cell_h
+    y1=(r+1)*cell_h if r<ROWS-1 else h
     crop=im.crop((x0,y0,x1,y1))
     a=np.asarray(crop.getchannel('A'))
     valid=np.where(a>20)
     if len(valid[0])==0:
         raise ValueError(f'empty source cell {i}')
-    top=int(valid[0].min()); bottom=int(valid[0].max())
-    left=int(valid[1].min()); right=int(valid[1].max())
-    ylo=min(a.shape[0]-1,top+40); yhi=min(a.shape[0],top+110)
+    top=int(valid[0].min())
+    bottom=int(valid[0].max())
+    left=int(valid[1].min())
+    right=int(valid[1].max())
+    ylo=min(a.shape[0]-1,top+40)
+    yhi=min(a.shape[0],top+110)
     head=np.where(a[ylo:yhi]>160)[1]
     head_mid=float(np.median(head)) if len(head) else float((left+right)/2)
     dx=int(round(HEAD_CENTER_X-head_mid))
     dy=GROUND_Y-bottom
     tight=crop.crop((left,top,right+1,bottom+1))
-    px=dx+left; py=dy+top
+    px=dx+left
+    py=dy+top
     if px<0 or px+tight.width>CELL_W or py<0 or py+tight.height>CELL_H:
         raise ValueError(f'frame {i} exceeds cell boundaries ({px},{py}) size {tight.width}×{tight.height}')
     cells.append((tight,px,py,top,bottom,head_mid,[x0,y0,x1-x0,y1-y0]))

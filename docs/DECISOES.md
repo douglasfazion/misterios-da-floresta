@@ -1,4 +1,4 @@
-# Decisões — JOCA v0.4.3
+# Decisões — JOCA v0.4.2
 
 - Escopo continua focado exclusivamente na caminhada.
 - A animação articulada segue descartada.

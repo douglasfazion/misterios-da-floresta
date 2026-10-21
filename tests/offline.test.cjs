@@ -4,9 +4,9 @@ const {createPlayer,stepPlayer,stopPlayer}=require('../.test-build/player.js');
 const {MOVE,WORLD,ART,VERSION}=require('../.test-build/config.js');
 const {frameForPhase}=require('../.test-build/gait.js');
 function advance(start,dir,seconds){let s=start;for(let i=0;i<Math.round(seconds/MOVE.fixedStep);i++)s=stepPlayer(s,dir,MOVE.fixedStep);return s;}
-test('new base is versioned as JOCA v0.4.3 and uses eight full sprites',()=>{
- assert.equal(VERSION,'0.4.3');assert.equal(ART.frames,8);assert.equal(ART.frameWidth,560);assert.equal(ART.frameHeight,560);
- assert.equal(ART.anchorX,360);assert.equal(ART.footY,530);
+test('new base is versioned as JOCA v0.4.2 and uses eight full sprites',()=>{
+ assert.equal(VERSION,'0.4.2');assert.equal(ART.frames,8);assert.equal(ART.frameWidth,560);assert.equal(ART.frameHeight,560);
+ assert.equal(ART.anchorX,320);assert.equal(ART.footY,530);
 });
 test('starts on frame 0 at the previous spawn location',()=>{
  assert.equal(WORLD.startX,180);assert.equal(createPlayer().phase,0);assert.equal(frameForPhase(0,false),0);
