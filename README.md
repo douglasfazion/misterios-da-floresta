@@ -1,50 +1,56 @@
-# JOCA v0.3.9 — caminhada refinada com sprites corrigidos
+# JOCA — As Sombras da Mata v0.5.14
 
-**Estado: pronta para avaliação jogável.** Esta entrega corrige a caminhada de forma mais profunda: além do ajuste de apresentação, a animação agora usa um novo atlas de caminhada derivado da identidade visual aprovada de Joca, com braços e mãos mais consistentes e uma passada mais natural.
+## O que mudou nesta atualização
+- Restaurada a corrida com **6 quadros** da v0.5.3, na ordem **6 → 7 → 8 → 3 → 1 → 5** da última folha de 8 poses selecionada anteriormente.
+- **Removidos todos os buracos do chão principal**: superfície ininterrupta de x=0 até x=5600, na altura y=586.
+- **Todas as 11 plataformas elevadas foram preservadas** nas mesmas posições para testar o salto.
+- Corrigido o ciclo da corrida no código Phaser compilado e no Canvas offline: ele volta do sexto para o primeiro quadro, sem tentar usar sprites inexistentes.
+- Arte do Joca, caminhada, salto, ataque de garras, cenário de fundo e controles foram mantidos.
+- Sem inimigos.
 
-## Jogar imediatamente (Windows, Chrome/Edge)
+## Abrir e jogar (offline)
+1. Extraia o ZIP inteiro.
+2. Abra a pasta `JOCA-v0.5.14-PHASER-ABRIR-E-JOGAR`.
+3. Dê dois cliques em `index.html` para jogar sem instalação.
 
-1. Extraia todo o ZIP.
-2. Dê um duplo clique em `JOGAR.html` (inclui motor e artes, sem internet, Node nem instalação).
-3. Clique na área do jogo para ativar o teclado.
-4. Use **A/D** ou **←/→** para caminhar e **R** para reiniciar.
+**Controles:** A/D ou setas = andar; Shift = correr; Espaço/W/↑ = pular; J = garras; R = reiniciar.
 
-**O que observar:** caminhe continuamente nos dois sentidos e avalie a fluidez geral do ciclo, principalmente braços, mãos e transição de uma passada para a outra.
+## Phaser + TypeScript
+O projeto inclui o código-fonte Phaser 3 + TypeScript em `src/`, o JavaScript compilado em `runtime/phaser/`, testes em `tests/` e GitHub Actions. Para desenvolver/publicar a versão Phaser, execute `npm install`, `npm run check`, `npm run stage`.
 
-## O que mudou nesta versão
+Ao abrir `index.html` diretamente pelo navegador (`file://`), inicia o modo Canvas offline com os mesmos recursos. Ao abrir por HTTP(S), utiliza Phaser se disponível localmente (`vendor/phaser.min.js`, gerado por `npm run build`) ou pelo CDN. Se não houver runtime Phaser disponível, inicia Canvas. O motor Phaser não está embutido no ZIP offline.
 
-- O spritesheet de caminhada foi **substituído** por uma versão corrigida, mantendo a identidade visual aprovada do Joca: mesma aparência parcialmente lupina, mesma paleta, mesmas roupas e a mesma direção artística 2D ilustrada.
-- O foco da correção foi eliminar o movimento estranho nas mãos e tornar a caminhada mais fluida e natural no conjunto.
-- A lógica do jogo continua baseada em deslocamento real percorrido, não em tempo isolado.
-- A apresentação voltou a usar transição suave **apenas na emenda final do ciclo (8→1)**, para manter nitidez nas demais poses.
-- Controles, velocidade, câmera, colisão de limites, tela e cenário existentes foram preservados.
+## Verificações
+`npm run typecheck` / `node --test tests/*.test.mjs` / `node scripts/audit-assets.mjs`.
 
-## Estrutura e comandos de desenvolvimento
 
-- `src/` — Phaser/TypeScript em módulos, controle, caminhada, câmera e cenário.
-- `art-source/v0.3.9-walk-generated/` — atlas de caminhada corrigido usado nesta versão.
-- `public/assets/` — recursos usados no jogo.
-- `dist/` — compilação para servidor Web (ex.: `node server.mjs`).
-- `JOGAR.html` — versão Web autocontida para abrir diretamente.
-- `history/` — versões anteriores e informações de recuperação.
-- `docs/` — changelog, decisões, arte e QA.
+## v0.5.14
+- corrigida a mão interna da corrida em todos os 6 quadros
+- preservado o restante do jogo exatamente como na v0.5.5
 
-Com Node.js e acesso ao registro npm (depende da rede):
 
-```sh
-npm ci
-npm run dev
-npm run test
-npm run build
-npm run test:e2e
-```
+## v0.5.14 — Reposição da arte correta
+- Retorna à **primeira variante** da folha de oito poses, com paleta e acessórios mais próximos da v0.5.5 aprovada.
+- Corrige o recorte do pé que cruzava o limite entre o segundo e o terceiro quadros.
+- Apenas os seis PNGs da corrida e os números de versão/documentação foram alterados; demais arquivos iguais à v0.5.6.
+- Abra `index.html` diretamente para usar o modo offline; mantenha o projeto Phaser para publicação.
 
-Neste ambiente, foi possível rodar:
 
-```sh
-npm run verify:art
-npm run test:offline
-npm run build:offline
-```
+## v0.5.14 — caminhada aprovada com quatro poses
 
-A aprovação artística final da caminhada continua pendente do seu teste.
+A folha original aprovada foi copiada para `reference/folha-aprovada-original.png`.
+A caminhada utiliza **somente as quatro poses dessa folha**, na ordem 1 → 2 → 3 → 4, sem redesenhar o Joca.
+Os sprites foram isolados por silhueta, normalizados para quadros de 600×540 e ancorados pela linha do chão.
+A cadência é sincronizada ao deslocamento real (40 px por quadro). Corrida, pulo, ataque, chão e plataformas mantidos.
+Para jogar offline, extraia o ZIP e abra `index.html`.
+
+
+## Atualização v0.5.14
+- caminhada integrada a partir da spritesheet aprovada de 8 quadros
+- corrida integrada a partir da spritesheet aprovada de 8 quadros
+- salto integrado a partir da spritesheet aprovada de 8 quadros
+- assets recortados e alinhados em canvas transparente de 600x540
+
+## Correção v0.5.14
+
+- correção da ordem das spritesheets: 1ª salto, 2ª caminhada, 3ª corrida
