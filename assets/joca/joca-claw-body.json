@@ -1,0 +1,172 @@
+{
+  "frames": {
+    "0": {
+      "frame": {
+        "x": 16,
+        "y": 27,
+        "w": 295,
+        "h": 399
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 216,
+        "y": 113,
+        "w": 295,
+        "h": 399
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "1": {
+      "frame": {
+        "x": 323,
+        "y": 77,
+        "w": 331,
+        "h": 350
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 194,
+        "y": 162,
+        "w": 331,
+        "h": 350
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "2": {
+      "frame": {
+        "x": 654,
+        "y": 62,
+        "w": 355,
+        "h": 365
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 186,
+        "y": 147,
+        "w": 355,
+        "h": 365
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "3": {
+      "frame": {
+        "x": 1056,
+        "y": 64,
+        "w": 466,
+        "h": 363
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 138,
+        "y": 149,
+        "w": 466,
+        "h": 363
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "4": {
+      "frame": {
+        "x": 14,
+        "y": 489,
+        "w": 449,
+        "h": 370
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 160,
+        "y": 142,
+        "w": 449,
+        "h": 370
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "5": {
+      "frame": {
+        "x": 514,
+        "y": 488,
+        "w": 390,
+        "h": 371
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 150,
+        "y": 141,
+        "w": 390,
+        "h": 371
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "6": {
+      "frame": {
+        "x": 1016,
+        "y": 487,
+        "w": 352,
+        "h": 372
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 167,
+        "y": 140,
+        "w": 352,
+        "h": 372
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "7": {
+      "frame": {
+        "x": 1452,
+        "y": 471,
+        "w": 317,
+        "h": 388
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 206,
+        "y": 124,
+        "w": 317,
+        "h": 388
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    }
+  },
+  "meta": {
+    "image": "joca-claw-body.png",
+    "size": {
+      "w": 1786,
+      "h": 881
+    },
+    "scale": "1"
+  }
+}

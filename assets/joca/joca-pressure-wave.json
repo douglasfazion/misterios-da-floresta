@@ -1,0 +1,91 @@
+{
+  "frames": {
+    "0": {
+      "frame": {
+        "x": 261,
+        "y": 171,
+        "w": 328,
+        "h": 143
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 261,
+        "y": 171,
+        "w": 328,
+        "h": 143
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "1": {
+      "frame": {
+        "x": 800,
+        "y": 138,
+        "w": 700,
+        "h": 240
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 138,
+        "w": 700,
+        "h": 240
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "2": {
+      "frame": {
+        "x": 43,
+        "y": 638,
+        "w": 678,
+        "h": 233
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 43,
+        "y": 126,
+        "w": 678,
+        "h": 233
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "3": {
+      "frame": {
+        "x": 924,
+        "y": 667,
+        "w": 529,
+        "h": 187
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 156,
+        "y": 155,
+        "w": 529,
+        "h": 187
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    }
+  },
+  "meta": {
+    "image": "joca-pressure-wave.png",
+    "size": {
+      "w": 1536,
+      "h": 1024
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "frames": {
+    "0": {
+      "frame": {
+        "x": 127,
+        "y": 144,
+        "w": 396,
+        "h": 398
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 167,
+        "y": 222,
+        "w": 396,
+        "h": 398
+      },
+      "sourceSize": {
+        "w": 800,
+        "h": 620
+      }
+    },
+    "1": {
+      "frame": {
+        "x": 914,
+        "y": 158,
+        "w": 411,
+        "h": 382
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 154,
+        "y": 238,
+        "w": 411,
+        "h": 382
+      },
+      "sourceSize": {
+        "w": 800,
+        "h": 620
+      }
+    },
+    "2": {
+      "frame": {
+        "x": 1698,
+        "y": 129,
+        "w": 497,
+        "h": 407
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 138,
+        "y": 213,
+        "w": 497,
+        "h": 407
+      },
+      "sourceSize": {
+        "w": 800,
+        "h": 620
+      }
+    },
+    "3": {
+      "frame": {
+        "x": 2504,
+        "y": 75,
+        "w": 544,
+        "h": 458
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 144,
+        "y": 162,
+        "w": 544,
+        "h": 458
+      },
+      "sourceSize": {
+        "w": 800,
+        "h": 620
+      }
+    },
+    "4": {
+      "frame": {
+        "x": 117,
+        "y": 748,
+        "w": 630,
+        "h": 417
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 157,
+        "y": 203,
+        "w": 630,
+        "h": 417
+      },
+      "sourceSize": {
+        "w": 800,
+        "h": 620
+      }
+    },
+    "5": {
+      "frame": {
+        "x": 913,
+        "y": 775,
+        "w": 585,
+        "h": 390
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 153,
+        "y": 230,
+        "w": 585,
+        "h": 390
+      },
+      "sourceSize": {
+        "w": 800,
+        "h": 620
+      }
+    },
+    "6": {
+      "frame": {
+        "x": 1698,
+        "y": 766,
+        "w": 522,
+        "h": 399
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 138,
+        "y": 221,
+        "w": 522,
+        "h": 399
+      },
+      "sourceSize": {
+        "w": 800,
+        "h": 620
+      }
+    },
+    "7": {
+      "frame": {
+        "x": 2508,
+        "y": 721,
+        "w": 417,
+        "h": 397
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 148,
+        "y": 223,
+        "w": 417,
+        "h": 397
+      },
+      "sourceSize": {
+        "w": 800,
+        "h": 620
+      }
+    }
+  },
+  "meta": {
+    "image": "joca-secondary-run.png",
+    "size": {
+      "w": 3200,
+      "h": 1240
+    },
+    "scale": "1"
+  }
+}

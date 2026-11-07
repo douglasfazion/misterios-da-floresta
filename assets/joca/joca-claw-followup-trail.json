@@ -1,0 +1,172 @@
+{
+  "frames": {
+    "0": {
+      "frame": {
+        "x": 241,
+        "y": 175,
+        "w": 54,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 54,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 54,
+        "h": 35
+      }
+    },
+    "1": {
+      "frame": {
+        "x": 604,
+        "y": 151,
+        "w": 83,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 83,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 83,
+        "h": 58
+      }
+    },
+    "2": {
+      "frame": {
+        "x": 1039,
+        "y": 149,
+        "w": 178,
+        "h": 85
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 178,
+        "h": 85
+      },
+      "sourceSize": {
+        "w": 178,
+        "h": 85
+      }
+    },
+    "3": {
+      "frame": {
+        "x": 1413,
+        "y": 150,
+        "w": 336,
+        "h": 161
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 336,
+        "h": 161
+      },
+      "sourceSize": {
+        "w": 336,
+        "h": 161
+      }
+    },
+    "4": {
+      "frame": {
+        "x": 63,
+        "y": 571,
+        "w": 409,
+        "h": 241
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 409,
+        "h": 241
+      },
+      "sourceSize": {
+        "w": 409,
+        "h": 241
+      }
+    },
+    "5": {
+      "frame": {
+        "x": 565,
+        "y": 643,
+        "w": 331,
+        "h": 147
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 331,
+        "h": 147
+      },
+      "sourceSize": {
+        "w": 331,
+        "h": 147
+      }
+    },
+    "6": {
+      "frame": {
+        "x": 1102,
+        "y": 676,
+        "w": 209,
+        "h": 88
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 88
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 88
+      }
+    },
+    "7": {
+      "frame": {
+        "x": 1608,
+        "y": 701,
+        "w": 99,
+        "h": 42
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 99,
+        "h": 42
+      },
+      "sourceSize": {
+        "w": 99,
+        "h": 42
+      }
+    }
+  },
+  "meta": {
+    "image": "joca-claw-followup-trail.png",
+    "size": {
+      "w": 1786,
+      "h": 880
+    },
+    "scale": "1"
+  }
+}

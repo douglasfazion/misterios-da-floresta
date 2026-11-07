@@ -1,0 +1,191 @@
+{
+  "frames": {
+    "0": {
+      "frame": {
+        "x": 172,
+        "y": 169,
+        "w": 321,
+        "h": 357
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 226,
+        "y": 155,
+        "w": 321,
+        "h": 357
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "1": {
+      "frame": {
+        "x": 915,
+        "y": 214,
+        "w": 340,
+        "h": 311
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 169,
+        "y": 201,
+        "w": 340,
+        "h": 311
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "2": {
+      "frame": {
+        "x": 1742,
+        "y": 138,
+        "w": 452,
+        "h": 384
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 196,
+        "y": 128,
+        "w": 452,
+        "h": 384
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "3": {
+      "frame": {
+        "x": 161,
+        "y": 801,
+        "w": 506,
+        "h": 346
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 215,
+        "y": 166,
+        "w": 506,
+        "h": 346
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "4": {
+      "frame": {
+        "x": 958,
+        "y": 834,
+        "w": 582,
+        "h": 330
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 212,
+        "y": 182,
+        "w": 582,
+        "h": 330
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "5": {
+      "frame": {
+        "x": 1733,
+        "y": 808,
+        "w": 525,
+        "h": 403
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 177,
+        "y": 109,
+        "w": 525,
+        "h": 403
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "6": {
+      "frame": {
+        "x": 154,
+        "y": 1491,
+        "w": 448,
+        "h": 358
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 208,
+        "y": 154,
+        "w": 448,
+        "h": 358
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "7": {
+      "frame": {
+        "x": 967,
+        "y": 1484,
+        "w": 311,
+        "h": 370
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 231,
+        "y": 142,
+        "w": 311,
+        "h": 370
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    },
+    "8": {
+      "frame": {
+        "x": 1732,
+        "y": 1430,
+        "w": 315,
+        "h": 437
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 206,
+        "y": 75,
+        "w": 315,
+        "h": 437
+      },
+      "sourceSize": {
+        "w": 768,
+        "h": 512
+      }
+    }
+  },
+  "meta": {
+    "image": "joca-secondary-jump.png",
+    "size": {
+      "w": 2400,
+      "h": 2100
+    }
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "frames": {
+    "0": {
+      "frame": {
+        "x": 49,
+        "y": 16,
+        "w": 373,
+        "h": 412
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 60,
+        "y": 102,
+        "w": 373,
+        "h": 412
+      },
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      }
+    },
+    "1": {
+      "frame": {
+        "x": 487,
+        "y": 39,
+        "w": 329,
+        "h": 390
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 55,
+        "y": 124,
+        "w": 329,
+        "h": 390
+      },
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      }
+    },
+    "2": {
+      "frame": {
+        "x": 941,
+        "y": 35,
+        "w": 336,
+        "h": 394
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 66,
+        "y": 120,
+        "w": 336,
+        "h": 394
+      },
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      }
+    },
+    "3": {
+      "frame": {
+        "x": 1396,
+        "y": 35,
+        "w": 360,
+        "h": 393
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 78,
+        "y": 121,
+        "w": 360,
+        "h": 393
+      },
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      }
+    },
+    "4": {
+      "frame": {
+        "x": 43,
+        "y": 477,
+        "w": 380,
+        "h": 395
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 54,
+        "y": 119,
+        "w": 380,
+        "h": 395
+      },
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      }
+    },
+    "5": {
+      "frame": {
+        "x": 490,
+        "y": 477,
+        "w": 357,
+        "h": 393
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 58,
+        "y": 121,
+        "w": 357,
+        "h": 393
+      },
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      }
+    },
+    "6": {
+      "frame": {
+        "x": 934,
+        "y": 477,
+        "w": 353,
+        "h": 392
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 59,
+        "y": 122,
+        "w": 353,
+        "h": 392
+      },
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      }
+    },
+    "7": {
+      "frame": {
+        "x": 1377,
+        "y": 466,
+        "w": 354,
+        "h": 405
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 59,
+        "y": 109,
+        "w": 354,
+        "h": 405
+      },
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      }
+    }
+  },
+  "meta": {
+    "image": "joca-pressure-walk.png",
+    "size": {
+      "w": 1774,
+      "h": 887
+    }
+  }
+}
